@@ -60,7 +60,9 @@ class UserController {
                                                     
                                                     DispatchQueue.main.async {
                                                         
-                                                        myAnchor = newAnchor!
+                                                        if let newAnchor = newAnchor {
+                                                            myAnchor = newAnchor
+                                                        }
                                                         
                                                         
                                                         guard let samples = samplesOrNil,

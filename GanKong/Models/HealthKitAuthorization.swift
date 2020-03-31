@@ -37,7 +37,8 @@ class HealthKitAuthorization {
             let height = HKObjectType.quantityType(forIdentifier: .height),
             // weight
             let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass),
-            let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate)
+            let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate),
+            let stepCount = HKObjectType.quantityType(forIdentifier: .stepCount)
             else {
                 completion(false, HealthkitSetupError.dataTypeNotAvailable)
                 return
@@ -51,6 +52,7 @@ class HealthKitAuthorization {
                                                    bodyMass,
                                                    bodyFatPercentage,
                                                    heartRate,
+                                                   stepCount,
                                                    HKObjectType.workoutType( )]
     //4. Request Authorization
     HKHealthStore( ).requestAuthorization(toShare: nil,

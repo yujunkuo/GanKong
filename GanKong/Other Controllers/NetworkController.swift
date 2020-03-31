@@ -48,5 +48,22 @@ class NetworkController {
         }
         task.resume( )
     }
+    
+    func postStepCountData (data: String, time: String, completion: @escaping(Int?) -> Void) {
+        let stepCountURL = baseURL.appendingPathComponent("step_count/1")
+        var request = URLRequest(url: stepCountURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["step_count_data": data, "step_count_time": time]
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request) { (data,
+        response, error) in
+            
+        }
+        task.resume( )
+    }
 }
 

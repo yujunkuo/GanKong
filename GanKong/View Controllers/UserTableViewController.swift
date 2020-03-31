@@ -22,11 +22,12 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var ageLabel: UILabel!
     @IBOutlet var biologicalSexLabel: UILabel!
     @IBOutlet var bloodTypeLabel: UILabel!
-    @IBOutlet var stepLabel: NSLayoutConstraint!
+    @IBOutlet var stepCountLabel: UILabel!
+    @IBOutlet var SCDateLabel: UILabel!
     @IBOutlet var weightLabel: UILabel!
     @IBOutlet var heightLabel: UILabel!
     @IBOutlet var bodyMassIndexLabel: UILabel!
-    @IBOutlet var heartrateLabel: UILabel!
+    @IBOutlet var heartRateLabel: UILabel!
     @IBOutlet var HRDateLabel: UILabel!
     
 
@@ -56,6 +57,7 @@ class UserTableViewController: UITableViewController {
         loadAndDisplayMostRecentWeight()
         loadAndDisplayMostRecentHeight()
         loadAndDisplayMostRecentHeartRate()
+        loadAndDisplayMostRecentStep()
     }
         
     private func loadAndDisplayAgeSexAndBloodType() {
@@ -99,16 +101,31 @@ class UserTableViewController: UITableViewController {
             bodyMassIndexLabel.text = String(format: "%.02f", bodyMassIndex)
         }
         
-        if let heartrate = user.heartratePerMins {
-            let heartrateFormatter = NumberFormatter()
-            heartrateLabel.text = heartrateFormatter.string(for: heartrate)
+        if let heartRate = user.heartRatePerMins {
+            let heartRateFormatter = NumberFormatter()
+            heartRateLabel.text = heartRateFormatter.string(for: heartRate)
         }
         
-        if let HRDate = user.HeartRateDate {
+        if let HRDate = user.heartRateDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
             self.HRDateLabel.text = dateFormatter.string(from: HRDate)
         }
+        
+        
+        if let stepCount = user.stepCount {
+            let stepCountFormatter = NumberFormatter()
+            stepCountLabel.text = stepCountFormatter.string(for: stepCount)
+        }
+        
+        if let SCDate = user.stepCountDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
+            self.SCDateLabel.text = dateFormatter.string(from: SCDate)
+        }
+        
+        
+        
         
     }
         
@@ -167,12 +184,12 @@ class UserTableViewController: UITableViewController {
         
     private func loadAndDisplayMostRecentHeartRate() {
         
-        guard let heartrateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
+        guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
             print("Heart Rate Sample Type is no longer available in HealthKit")
             return
         }
         
-        UserController.getMostRecentSample(for: heartrateType) { (sample, error) in
+        UserController.getMostRecentSample(for: heartRateType) { (sample, error) in
             
             guard let sample = sample else {
                 
@@ -181,19 +198,54 @@ class UserTableViewController: UITableViewController {
                 }
                 return
             }
-            let heartrate = HKUnit(from: "count/min")
-            let heartrateperMins = sample.quantity.doubleValue(for: heartrate)
-            self.user.heartratePerMins = heartrateperMins
+            let heartRate = HKUnit(from: "count/min")
+            let heartRateperMins = sample.quantity.doubleValue(for: heartRate)
+            self.user.heartRatePerMins = heartRateperMins
             let HRdate = sample.startDate
-            self.user.HeartRateDate = HRdate
+            self.user.heartRateDate = HRdate
             self.updateLabels()
             let HRtimeStamp: TimeInterval = HRdate.timeIntervalSince1970
             let HRtimeStampString = String(HRtimeStamp)
             
-            let heartrateFormatter = NumberFormatter()
-            let heart_rate_data = heartrateFormatter.string(for: heartrateperMins)
+            let heartRateFormatter = NumberFormatter()
+            let heartRateData = heartRateFormatter.string(for: heartRateperMins)
         
-            self.networkController.postHeartRateData(data: heart_rate_data!, time: HRtimeStampString) { (response) in
+            self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString) { (response) in
+                
+              }
+            }
+    }
+    
+    
+    private func loadAndDisplayMostRecentStep() {
+        
+        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            print("Step Count Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getMostRecentSample(for: stepCountType) { (sample, error) in
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
+                return
+            }
+            let stepCount = HKUnit(from: "count")
+            let stepCountDouble = sample.quantity.doubleValue(for: stepCount)
+            self.user.stepCount = Int(stepCountDouble)
+            let SCdate = sample.startDate
+            self.user.stepCountDate = SCdate
+            self.updateLabels()
+            let SCtimeStamp: TimeInterval = SCdate.timeIntervalSince1970
+            let SCtimeStampString = String(SCtimeStamp)
+            
+            let stepCountFormatter = NumberFormatter()
+            let stepCountData = stepCountFormatter.string(for: stepCountDouble)
+        
+            self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString) { (response) in
                 
               }
             }
