@@ -10,17 +10,23 @@ import Foundation
 import HealthKit
 
 class User {
-    var account: String?
-    var password: String?
-    var name: String?
+    
     var age: Int?
-    var sex: HKBiologicalSex?
+    var biologicalSex: HKBiologicalSex?
     var bloodType: HKBloodType?
     var heightInMeters: Double?
     var weightInKilograms: Double?
+    var heartratePerMins : Double?
     
-    
-    init ( ) { }
-    
+    var bodyMassIndex: Double? {
+        
+        guard let weightInKilograms = weightInKilograms,
+            let heightInMeters = heightInMeters,
+            heightInMeters > 0 else {
+                return nil
+        }
+        
+        return (weightInKilograms/(heightInMeters*heightInMeters))
+    }
 }
 

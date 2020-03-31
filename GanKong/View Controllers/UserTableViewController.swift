@@ -7,67 +7,215 @@
 //
 
 import UIKit
+import HealthKit
 
 class UserTableViewController: UITableViewController {
     
-    private var user = User( )
-    private var userInformation: [Any] = [ ]
-
-    private func loadAgeSexAndBloodType( ) {
-      do {
-        let userAgeSexAndBloodType = try UserController.getAgeSexAndBloodType()
-        user.age = userAgeSexAndBloodType.age
-        user.sex = userAgeSexAndBloodType.biologicalSex
-        user.bloodType = userAgeSexAndBloodType.bloodType
-      } catch _ {
-      }
-    }
-    
-    
     override func viewDidLoad( ) {
         super.viewDidLoad( )
-        loadAgeSexAndBloodType( )
-        if let name = user.name {
-            userInformation.append(["姓名": name])
-        } else { userInformation.append(["姓名": "NaN"]) }
-        if let age = user.age {
-            userInformation.append( ["年齡": age] )
-        } else { userInformation.append(["年齡": "NaN"]) }
-        if let sex = user.sex {
-            userInformation.append(["性別": sex])
-        } else { userInformation.append(["性別": "NaN"]) }
-        if let bloodType = user.bloodType {
-            userInformation.append(["血型": bloodType])
-        } else { userInformation.append(["血型": "NaN"]) }
+        updateHealthInfo( )
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    @IBOutlet var ageLabel: UILabel!
+    @IBOutlet var biologicalSexLabel: UILabel!
+    @IBOutlet var bloodTypeLabel: UILabel!
+    @IBOutlet var stepLabel: NSLayoutConstraint!
+    @IBOutlet var weightLabel: UILabel!
+    @IBOutlet var heightLabel: UILabel!
+    @IBOutlet var bodyMassIndexLabel: UILabel!
+    @IBOutlet var heartrateLabel: UILabel!
+    
 
+    private enum ProfileSection: Int {
+            case ageSexBloodType
+            case weightHeightBMI
+            case readHealthKitData
+            case saveBMI
+        }
+        
+    private enum ProfileDataError: Error {
+            
+            case missingBodyMassIndex
+            
+            var localizedDescription: String {
+                switch self {
+                case .missingBodyMassIndex:
+                    return "Unable to calculate body mass index with available profile data."
+                }
+            }
+        }
+        
+    private let user = User( )
+        
+    private func updateHealthInfo() {
+        loadAndDisplayAgeSexAndBloodType()
+        loadAndDisplayMostRecentWeight()
+        loadAndDisplayMostRecentHeight()
+        loadAndDisplayMostRecentHeartRate()
+    }
+        
+    private func loadAndDisplayAgeSexAndBloodType() {
+        do {
+            let userAgeSexAndBloodType = try UserController.getAgeSexAndBloodType()
+            user.age = userAgeSexAndBloodType.age
+            user.biologicalSex = userAgeSexAndBloodType.biologicalSex
+            user.bloodType = userAgeSexAndBloodType.bloodType
+            updateLabels()
+        } catch let error {
+            self.displayAlert(for: error)
+        }
+    }
+        
+    private func updateLabels() {
+        if let age = user.age {
+            ageLabel.text = "\(age)"
+        }
+        
+        if let biologicalSex = user.biologicalSex {
+            biologicalSexLabel.text = String(biologicalSex.rawValue)
+        }
+        
+        if let bloodType = user.bloodType {
+            bloodTypeLabel.text = String(bloodType.rawValue)
+        }
+        
+        if let weight = user.weightInKilograms {
+            let weightFormatter = MassFormatter()
+            weightFormatter.isForPersonMassUse = true
+            weightLabel.text = weightFormatter.string(fromKilograms: weight)
+        }
+        
+        if let height = user.heightInMeters {
+            let heightFormatter = LengthFormatter()
+            heightFormatter.isForPersonHeightUse = true
+            heightLabel.text = heightFormatter.string(fromMeters: height)
+        }
+        
+        if let bodyMassIndex = user.bodyMassIndex {
+            bodyMassIndexLabel.text = String(format: "%.02f", bodyMassIndex)
+        }
+        
+        if let heartrate = user.heartratePerMins {
+            let heartrateFormatter = NumberFormatter()
+//            heartrateFormatter. = true
+            heartrateLabel.text = heartrateFormatter.string(for: heartrate)
+        }
+        
+    }
+        
+    private func loadAndDisplayMostRecentHeight() {
+        
+        //1. Use HealthKit to create the Height Sample Type
+        guard let heightSampleType = HKSampleType.quantityType(forIdentifier: .height) else {
+            print("Height Object Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getMostRecentSample(for: heightSampleType) { (sample, error) in
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
+                
+                return
+            }
+                
+            //2. Convert the height sample to meters, save to the profile model,
+            //   and update the user interface.
+            let heightInMeters = sample.quantity.doubleValue(for: HKUnit.meter())
+            self.user.heightInMeters = heightInMeters
+            self.updateLabels()
+        }
+        
+        
+    }
+        
+    private func loadAndDisplayMostRecentWeight() {
+        
+        guard let weightSampleType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
+            print("Body Mass Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getMostRecentSample(for: weightSampleType) { (sample, error) in
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
+                return
+            }
+            
+            let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            self.user.weightInKilograms = weightInKilograms
+            self.updateLabels()
+        }
+        
+    }
+        
+    private func loadAndDisplayMostRecentHeartRate() {
+        
+        guard let heartrateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
+            print("Heart Rate Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getMostRecentSample(for: heartrateType) { (sample, error) in
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
+                return
+            }
+            let heartrate = HKUnit(from: "count/min")
+            let heartrateperMins = sample.quantity.doubleValue(for: heartrate)
+            self.user.heartratePerMins = heartrateperMins
+            self.updateLabels()
+        }
+    }
+        
+        
+    private func displayAlert(for error: Error) {
+        
+        let alert = UIAlertController(title: nil,
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "O.K.",
+                                      style: .default,
+                                      handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    //override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+     //   return 1
+    //}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //override func tableView(_ tableView: UITableView, numberOfRowsInSection //section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
-    }
+     //   return 4
+   //}
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath)
+    //override func tableView(_ tableView: UITableView, cellForRowAt indexPath: //IndexPath) -> UITableViewCell {
+     //   let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: //indexPath)
 
         // Configure the cell...
-        let information = userInformation[indexPath.row]
-        cell.textLabel?.text = "\(information)"
-        return cell
-    }
+      //  let information = userInformation[indexPath.row]
+    //    cell.textLabel?.text = "\(information)"
+     //   return cell
+    //}
 
     /*
     // Override to support conditional editing of the table view.
