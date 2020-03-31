@@ -90,9 +90,9 @@ class UserController {
                                                     }
         }
         HKHealthStore().execute(anchorQuery)
-        HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (success: Bool, error: Error?) in
+        HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
             debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
-        }
+        })
     }
     
     
