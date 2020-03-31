@@ -31,5 +31,22 @@ class NetworkController {
         }
         task.resume( )
     }
+    
+    func postHeartRateData (data: String, time: String, completion: @escaping(Int?) -> Void) {
+        let heartRateURL = baseURL.appendingPathComponent("heart_rate/1")
+        var request = URLRequest(url: heartRateURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["heart_rate_data": data, "heart_rate_time": time]
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request) { (data,
+        response, error) in
+            
+        }
+        task.resume( )
+    }
 }
 

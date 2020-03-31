@@ -17,6 +17,8 @@ class UserTableViewController: UITableViewController {
 
     }
     
+    let networkController = NetworkController( )
+    
     @IBOutlet var ageLabel: UILabel!
     @IBOutlet var biologicalSexLabel: UILabel!
     @IBOutlet var bloodTypeLabel: UILabel!
@@ -185,9 +187,20 @@ class UserTableViewController: UITableViewController {
             let HRdate = sample.startDate
             self.user.HeartRateDate = HRdate
             self.updateLabels()
-        }
-    }
+            let HRtimeStamp: TimeInterval = HRdate.timeIntervalSince1970
+            let HRtimeStampString = String(HRtimeStamp)
+            
+            let heartrateFormatter = NumberFormatter()
+            let heart_rate_data = heartrateFormatter.string(for: heartrateperMins)
         
+            self.networkController.postHeartRateData(data: heart_rate_data!, time: HRtimeStampString) { (response) in
+                
+              }
+            }
+    }
+    
+
+    
         
     private func displayAlert(for error: Error) {
         
