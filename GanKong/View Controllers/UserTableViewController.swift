@@ -25,6 +25,7 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var heightLabel: UILabel!
     @IBOutlet var bodyMassIndexLabel: UILabel!
     @IBOutlet var heartrateLabel: UILabel!
+    @IBOutlet var HRDateLabel: UILabel!
     
 
     private enum ProfileSection: Int {
@@ -98,8 +99,13 @@ class UserTableViewController: UITableViewController {
         
         if let heartrate = user.heartratePerMins {
             let heartrateFormatter = NumberFormatter()
-//            heartrateFormatter. = true
             heartrateLabel.text = heartrateFormatter.string(for: heartrate)
+        }
+        
+        if let HRDate = user.HeartRateDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
+            self.HRDateLabel.text = dateFormatter.string(from: HRDate)
         }
         
     }
@@ -176,6 +182,8 @@ class UserTableViewController: UITableViewController {
             let heartrate = HKUnit(from: "count/min")
             let heartrateperMins = sample.quantity.doubleValue(for: heartrate)
             self.user.heartratePerMins = heartrateperMins
+            let HRdate = sample.startDate
+            self.user.HeartRateDate = HRdate
             self.updateLabels()
         }
     }

@@ -405,7 +405,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心律" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6J-VQ-Kh3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心率" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6J-VQ-Kh3">
                                                     <rect key="frame" x="32.5" y="12" width="35" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -426,6 +426,33 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hdY-Mp-HGP">
+                                        <rect key="frame" x="0.0" y="376" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdY-Mp-HGP" id="npH-Ca-XyQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心率時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afr-gI-KsR">
+                                                    <rect key="frame" x="18" y="11.5" width="70" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-jz-ZN5">
+                                                    <rect key="frame" x="167" y="11.5" width="238" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="afr-gI-KsR" firstAttribute="centerX" secondItem="npH-Ca-XyQ" secondAttribute="centerX" constant="-154" id="3bz-T0-lRM"/>
+                                                <constraint firstItem="eg5-jz-ZN5" firstAttribute="centerY" secondItem="npH-Ca-XyQ" secondAttribute="centerY" id="AwC-en-R6E"/>
+                                                <constraint firstItem="afr-gI-KsR" firstAttribute="centerY" secondItem="npH-Ca-XyQ" secondAttribute="centerY" id="fhE-1m-2Pb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -436,6 +463,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="User" id="gII-v1-YsI"/>
                     <connections>
+                        <outlet property="HRDateLabel" destination="eg5-jz-ZN5" id="MTy-Ym-lQV"/>
                         <outlet property="ageLabel" destination="JZg-Q9-LSk" id="9iY-Bq-Gkg"/>
                         <outlet property="biologicalSexLabel" destination="7QI-Fm-P8Y" id="YSw-Kq-QQR"/>
                         <outlet property="bloodTypeLabel" destination="cj4-Gk-56r" id="QNQ-gI-iW2"/>
@@ -448,7 +476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6v-Q5-2eA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-926" y="1317"/>
+            <point key="canvasLocation" x="-926.08695652173924" y="1316.5178571428571"/>
         </scene>
         <!--UserDetailViewController-->
         <scene sceneID="jR6-TH-Sqc">

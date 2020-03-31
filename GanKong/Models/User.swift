@@ -16,7 +16,8 @@ class User {
     var bloodType: HKBloodType?
     var heightInMeters: Double?
     var weightInKilograms: Double?
-    var heartratePerMins : Double?
+    var heartratePerMins: Double?
+    var HeartRateDate: Date?
     
     var bodyMassIndex: Double? {
         
