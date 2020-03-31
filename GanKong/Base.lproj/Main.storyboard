@@ -439,8 +439,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-jz-ZN5">
-                                                    <rect key="frame" x="167" y="11.5" width="238" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-jz-ZN5">
+                                                    <rect key="frame" x="252" y="11.5" width="72" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -449,6 +449,7 @@
                                             <constraints>
                                                 <constraint firstItem="afr-gI-KsR" firstAttribute="centerX" secondItem="npH-Ca-XyQ" secondAttribute="centerX" constant="-154" id="3bz-T0-lRM"/>
                                                 <constraint firstItem="eg5-jz-ZN5" firstAttribute="centerY" secondItem="npH-Ca-XyQ" secondAttribute="centerY" id="AwC-en-R6E"/>
+                                                <constraint firstItem="eg5-jz-ZN5" firstAttribute="centerX" secondItem="npH-Ca-XyQ" secondAttribute="centerX" constant="81" id="EhF-Mv-xUW"/>
                                                 <constraint firstItem="afr-gI-KsR" firstAttribute="centerY" secondItem="npH-Ca-XyQ" secondAttribute="centerY" id="fhE-1m-2Pb"/>
                                             </constraints>
                                         </tableViewCellContentView>
