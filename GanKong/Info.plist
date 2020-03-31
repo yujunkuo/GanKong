@@ -49,14 +49,10 @@
 		</dict>
 	</dict>
 	<key>UIBackgroundModes</key>
-<<<<<<< HEAD
-	<array/>
-=======
 	<array>
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
->>>>>>> 1d22cd54d0e48586817b6e48ed0d6021cbf588d0
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
