@@ -58,12 +58,11 @@ class UserController {
                                                 anchor: myAnchor,
                                                 limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
                                                     
+                                                    if let newAnchor = newAnchor {
+                                                        myAnchor = newAnchor
+                                                    }
+                                                    
                                                     DispatchQueue.main.async {
-                                                        
-                                                        if let newAnchor = newAnchor {
-                                                            myAnchor = newAnchor
-                                                        }
-                                                        
                                                         
                                                         guard let samples = samplesOrNil,
                                                             let mostRecentSample = samples.last as? HKQuantitySample else {
@@ -82,8 +81,8 @@ class UserController {
                                                         myAnchor = newAnchor!
                                                         
                                                         guard let samples = samplesOrNil,
-                                                            let mostRecentSample = samples.last as? HKQuantitySample else {
-                                                                
+                                                            let mostRecentSample = samples.last as?
+                                                                HKQuantitySample else {
                                                                 completion(nil, errorOrNil)
                                                                 return
                                                         }
