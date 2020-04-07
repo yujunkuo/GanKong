@@ -10,7 +10,7 @@
         <!--HomeViewController-->
         <scene sceneID="gmb-3H-IZ7">
             <objects>
-                <viewController title="HomeViewController" id="pDW-qz-a3O" customClass="HomeViewController" customModule="GanKong" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="HomeViewController" id="pDW-qz-a3O" customClass="HomeViewController" customModule="GanKong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qO-hb-PjX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

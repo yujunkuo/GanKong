@@ -67,6 +67,25 @@ class NetworkController {
     }
     
     
+    // Check is login or not
+    func checkLoginOrNot (completion: @escaping([String]?) -> Void) {
+        let checkLoginURL = baseURL.appendingPathComponent("check_login")
+        let task = URLSession.shared.dataTask(with: checkLoginURL)
+            { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String: Any],
+                    let loginInformation = jsonDictionary["data"] as? [String] {
+                        completion(loginInformation)
+                    } else {
+                        completion(nil)
+                 }
+        }
+        task.resume( )
+    }
+    
+    
     // use GET Request to get the heart rate data
     func fetchHeartRateData (completion: @escaping ([Double]?) -> Void) {
         let heartRateURL = baseURL.appendingPathComponent("heart_rate")

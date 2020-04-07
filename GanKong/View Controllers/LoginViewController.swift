@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
                             DispatchQueue.main.async {
                                     self.performSegue(withIdentifier: "LoginSegue", sender: nil)
                             }
+                            UserDefaults.standard.set(self.accountInput.text!, forKey: "account")
                         }
                         else {
                             print(status_code)
@@ -42,10 +43,17 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        super.viewDidLoad( )
+        // auto login
+        if (UserDefaults.standard.value(forKey: "account") != nil) {
+            let account = UserDefaults.standard.value(forKey: "account")
+            DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+        }
     }
+        // Do any additional setup after loading the view.
+   
     
 
     /*
