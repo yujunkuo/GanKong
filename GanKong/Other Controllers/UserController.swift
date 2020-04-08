@@ -51,10 +51,11 @@ class UserController {
                                                 anchor: myAnchor,
                                                 limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
                                                     
+                                                    if let newAnchor = newAnchor {
+                                                        myAnchor = newAnchor
+                                                    }
+                                                    
                                                     DispatchQueue.main.async {
-                                                        
-                                                        myAnchor = newAnchor!
-                                                        
                                                         
                                                         guard let samples = samplesOrNil,
                                                             let mostRecentSample = samples.last as? HKQuantitySample else {
@@ -71,24 +72,27 @@ class UserController {
                 
                 myAnchor = newAnchor!
                 
-                guard let samples = samplesOrNil,
-                    let mostRecentSample = samples.last as? HKQuantitySample else {
-                        completion(nil, errorOrNil)
-                        return
+                
+                DispatchQueue.main.async {
+                    
+                    myAnchor = newAnchor!
+                    
+                    guard let samples = samplesOrNil,
+                        let mostRecentSample = samples.last as?
+                        HKQuantitySample else {
+                            completion(nil, errorOrNil)
+                            return
+                    }
+                    
+                    completion(mostRecentSample, nil)
                 }
-                print("oh:", samples[0])
-//                for sample in samples{
-//                    print("w0w:", sample)
-//                }
-                completion(mostRecentSample, nil)
             }
+            HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
+                debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
+            })
+            HKHealthStore().execute(anchorQuery)
         }
-        HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
-            debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
-        })
-        HKHealthStore().execute(anchorQuery)
-    }
-    
-    
+        
+        
 }
 
