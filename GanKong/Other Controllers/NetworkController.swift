@@ -14,7 +14,7 @@ class NetworkController {
     let baseURL = URL(string: "http://140.119.19.18:5000/")!
     
     // Login
-    func login (account: String, password: String, completion: @escaping(Int?) -> Void) {
+    func login (account: String, password: String, completion: @escaping([Any]?) -> Void) {
         let loginURL = baseURL.appendingPathComponent("login")
         var request = URLRequest(url: loginURL)
         request.httpMethod = "POST"
@@ -29,9 +29,10 @@ class NetworkController {
                     if let data = data,
                         let jsonDictionary = try?
                         JSONSerialization.jsonObject(with: data) as?
-                        [String: Int],
-                        let status_code = jsonDictionary["status_code"] {
-                                completion(status_code)
+                        [String: Any],
+                        let status_code = jsonDictionary["status_code"] as? Int,
+                            let session_id = jsonDictionary["session_id"] as? String{
+                                completion([status_code, session_id])
                         } else {
                             completion(nil)
                         }

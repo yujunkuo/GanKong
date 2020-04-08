@@ -19,13 +19,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
         self.networkController.login(account: accountInput.text!, password: passwordInput.text!) {
-                (status_code) in
-                    if let status_code = status_code {
-                        if status_code == 200 {
+                (return_list) in
+                if let status_code = return_list?[0],
+                    let session_id = return_list?[1]{
+                    if status_code as! Int == 200 {
                             DispatchQueue.main.async {
                                     self.performSegue(withIdentifier: "LoginSegue", sender: nil)
                             }
-                            UserDefaults.standard.set(self.accountInput.text!, forKey: "account")
+                            UserDefaults.standard.set(session_id, forKey: "session_id")
                         }
                         else {
                             print(status_code)
@@ -45,8 +46,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad( )
         // auto login
-        if (UserDefaults.standard.value(forKey: "account") != nil) {
-            let account = UserDefaults.standard.value(forKey: "account")
+        if (UserDefaults.standard.value(forKey: "session_id") != nil) {
+            let session_id = UserDefaults.standard.value(forKey: "session_id")
             DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }

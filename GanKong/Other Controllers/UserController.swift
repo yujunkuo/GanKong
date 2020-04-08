@@ -70,7 +70,7 @@ class UserController {
                                                                 completion(nil, errorOrNil)
                                                                 return
                                                         }
-                                                        
+                                                        print(type(of: samples))
                                                         completion(mostRecentSample, nil)
                                                     }
         }
