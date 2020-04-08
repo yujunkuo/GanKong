@@ -68,21 +68,56 @@ class NetworkController {
     }
     
     
-    // Check is login or not
-    func checkLoginOrNot (completion: @escaping([String]?) -> Void) {
-        let checkLoginURL = baseURL.appendingPathComponent("check_login")
-        let task = URLSession.shared.dataTask(with: checkLoginURL)
+    // Logout
+    func logout (session_id: String, completion: @escaping(Int?) -> Void) {
+        let logoutURL = baseURL.appendingPathComponent("logout")
+        var request = URLRequest(url: logoutURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["session_id": session_id]
+        let jsonEncoder = JSONEncoder( )
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request)
             { (data, response, error) in
-                if let data = data,
-                    let jsonDictionary = try?
-                    JSONSerialization.jsonObject(with: data) as?
-                    [String: Any],
-                    let loginInformation = jsonDictionary["data"] as? [String] {
-                        completion(loginInformation)
-                    } else {
-                        completion(nil)
-                 }
-        }
+                    if let data = data,
+                        let jsonDictionary = try?
+                        JSONSerialization.jsonObject(with: data) as?
+                        [String: Int],
+                        let status_code = jsonDictionary["status_code"] {
+                                completion(status_code)
+                        } else {
+                            completion(nil)
+                        }
+            }
+        task.resume( )
+    }
+    
+    
+    // Check is login or not
+    func checkLogin (session_id: String, completion: @escaping(Int?) -> Void) {
+        let checkLoginURL = baseURL.appendingPathComponent("check_login")
+        var request = URLRequest(url: checkLoginURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["session_id": session_id]
+        let jsonEncoder = JSONEncoder( )
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request)
+            { (data, response, error) in
+                    if let data = data,
+                        let jsonDictionary = try?
+                        JSONSerialization.jsonObject(with: data) as?
+                        [String: Int],
+                        let status_code = jsonDictionary["status_code"] {
+                                completion(status_code)
+                        } else {
+                            completion(nil)
+                        }
+            }
         task.resume( )
     }
     

@@ -562,6 +562,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aBs-q4-KJQ">
+                                        <rect key="frame" x="0.0" y="464" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aBs-q4-KJQ" id="Qlr-pi-PXo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDX-bT-wpS">
+                                                    <rect key="frame" x="43" y="11.5" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tI5-3g-Hcm">
+                                                    <rect key="frame" x="191" y="7" width="83" height="30"/>
+                                                    <state key="normal" title="登出 Logout"/>
+                                                    <connections>
+                                                        <action selector="logoutButton:" destination="is4-Zo-fYJ" eventType="touchUpInside" id="Q6V-hA-gqf"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HDX-bT-wpS" firstAttribute="centerY" secondItem="Qlr-pi-PXo" secondAttribute="centerY" id="LQL-bI-P6z"/>
+                                                <constraint firstItem="HDX-bT-wpS" firstAttribute="centerX" secondItem="Qlr-pi-PXo" secondAttribute="centerX" constant="-146.5" id="Vq9-Oe-xDF"/>
+                                                <constraint firstItem="tI5-3g-Hcm" firstAttribute="centerY" secondItem="Qlr-pi-PXo" secondAttribute="centerY" id="aTy-EF-PT2"/>
+                                                <constraint firstItem="tI5-3g-Hcm" firstAttribute="centerX" secondItem="Qlr-pi-PXo" secondAttribute="centerX" constant="25.5" id="bdr-ZT-CrW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -582,6 +611,7 @@
                         <outlet property="heightLabel" destination="mrw-8P-blH" id="TkV-r9-krc"/>
                         <outlet property="stepCountLabel" destination="e9w-l6-5ha" id="wyl-9A-HZP"/>
                         <outlet property="weightLabel" destination="wzL-40-aWi" id="NFB-0u-3qa"/>
+                        <segue destination="EOw-iD-hQd" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" id="gm2-z3-kTE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6v-Q5-2eA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -715,7 +745,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lra-as-ST7">
                                 <rect key="frame" x="82" y="652" width="260" height="42"/>
-                                <color key="backgroundColor" red="0.66044717180993606" green="0.76769279040569949" blue="0.53301286196091269" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.63921568627450975" blue="0.61960784313725492" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="bbE-cn-lW1"/>
                                     <constraint firstAttribute="height" constant="42" id="uMQ-UE-fbv"/>
@@ -731,7 +761,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wba-jH-X80">
                                 <rect key="frame" x="82" y="722" width="260" height="42"/>
-                                <color key="backgroundColor" red="0.66044717180000001" green="0.76769279040000005" blue="0.53301286199999998" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.63921568627450975" blue="0.61960784313725492" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="1cl-wy-RMR"/>
                                     <constraint firstAttribute="height" constant="42" id="JUf-Uf-x7U"/>
@@ -846,7 +876,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXx-Ma-FvB">
                                 <rect key="frame" x="77" y="595" width="260" height="42"/>
-                                <color key="backgroundColor" red="0.66044717180000001" green="0.76769279040000005" blue="0.53301286199999998" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="eH3-GG-60S"/>
                                     <constraint firstAttribute="width" constant="260" id="nIo-9k-W9Z"/>
@@ -905,7 +935,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Ga0-bH-i2F">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Xur-t1-emK" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarView" automaticallyAdjustsScrollViewInsets="NO" id="Xur-t1-emK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6qT-Tr-xSj"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oMn-JF-FLk">
@@ -926,7 +956,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DXT-bc-FJe"/>
+        <segue reference="kbn-ay-kag"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>

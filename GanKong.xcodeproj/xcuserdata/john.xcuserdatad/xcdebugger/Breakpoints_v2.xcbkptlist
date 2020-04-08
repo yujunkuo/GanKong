@@ -26,10 +26,88 @@
             filePath = "GanKong/View Controllers/UserTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06063014-E1E6-4729-B6E9-C716F9BF6670"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GanKong/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "06063014-E1E6-4729-B6E9-C716F9BF6670 - 2182d52cecd59623"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GanKong.AppDelegate.__deallocating_deinit"
+                  moduleName = "GanKong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/swift%20projects/GanKong/GanKong/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "06063014-E1E6-4729-B6E9-C716F9BF6670 - ec1783a63f7e34b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GanKong.AppDelegate.__allocating_init() -&gt; GanKong.AppDelegate"
+                  moduleName = "GanKong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/swift%20projects/GanKong/GanKong/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "06063014-E1E6-4729-B6E9-C716F9BF6670 - 21735358976b9e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GanKong.AppDelegate.init() -&gt; GanKong.AppDelegate"
+                  moduleName = "GanKong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/swift%20projects/GanKong/GanKong/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "93">
+               </Location>
+               <Location
+                  uuid = "06063014-E1E6-4729-B6E9-C716F9BF6670 - e487a3cf33ae8ffd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "GanKong"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/john/Desktop/swift%20projects/GanKong/GanKong/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

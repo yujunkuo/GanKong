@@ -20,7 +20,7 @@ class User {
     var heartRateDate: Date?
     var stepCount: Int?
     var stepCountDate: Date?
-
+    var session_id: String?
     
     var bodyMassIndex: Double? {
         

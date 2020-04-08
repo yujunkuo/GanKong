@@ -11,10 +11,16 @@ import HealthKit
 
 class UserTableViewController: UITableViewController {
     
+    var user = User( )
+    
     override func viewDidLoad( ) {
         super.viewDidLoad( )
+        //let naVC = self.tabBarController?.viewControllers?.first as? UINavigationController
+        //let homeVC = naVC?.viewControllers.first as? HomeViewController
+        //var user = homeVC?.user
+        //print(user?.session_id)
+        user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         updateHealthInfo( )
-
     }
     
     let networkController = NetworkController( )
@@ -30,6 +36,30 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var heartRateLabel: UILabel!
     @IBOutlet var HRDateLabel: UILabel!
     @IBOutlet var HRNewLabel: UILabel!
+    
+    @IBAction func logoutButton(_ sender: UIButton) {
+        self.networkController.logout(session_id: self.user.session_id!) {
+            (status_code) in
+            print(self.user.session_id!) // debug
+            if let status_code = status_code {
+                if status_code == 200 {
+                    print(UserDefaults.standard.value(forKey: "session_id")) // debug
+                    UserDefaults.standard.removeObject(forKey: "session_id")
+                    print(UserDefaults.standard.value(forKey: "session_id")) // debug
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "LogoutSegue", sender: nil)
+                    }
+                }
+                else {
+                    print("logout fail")
+                }
+            }
+            else {
+                print("error")
+            }
+        }
+    }
+    
     
 
     private enum ProfileSection: Int {
@@ -50,8 +80,6 @@ class UserTableViewController: UITableViewController {
                 }
             }
         }
-        
-    private let user = User( )
         
     private func updateHealthInfo() {
         loadAndDisplayAgeSexAndBloodType()
@@ -269,8 +297,8 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     //override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-     //   return 1
+         // warning Incomplete implementation, return the number of sections
+      // return
     //}
 
     //override func tableView(_ tableView: UITableView, numberOfRowsInSection //section: Int) -> Int {
