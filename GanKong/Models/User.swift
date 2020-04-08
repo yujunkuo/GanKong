@@ -18,6 +18,7 @@ class User {
     var weightInKilograms: Double?
     var heartratePerMins: Double?
     var HeartRateDate: Date?
+    var HRnew: Array<Double>?
     
     var bodyMassIndex: Double? {
         

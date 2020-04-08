@@ -28,6 +28,7 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var bodyMassIndexLabel: UILabel!
     @IBOutlet var heartrateLabel: UILabel!
     @IBOutlet var HRDateLabel: UILabel!
+    @IBOutlet var HRNewLabel: UILabel!
     
 
     private enum ProfileSection: Int {
@@ -56,6 +57,7 @@ class UserTableViewController: UITableViewController {
         loadAndDisplayMostRecentWeight()
         loadAndDisplayMostRecentHeight()
         loadAndDisplayMostRecentHeartRate()
+//        loadAndDisplayNewHeartRate()
     }
         
     private func loadAndDisplayAgeSexAndBloodType() {
@@ -109,6 +111,7 @@ class UserTableViewController: UITableViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
             self.HRDateLabel.text = dateFormatter.string(from: HRDate)
         }
+        
         
     }
         
@@ -198,7 +201,6 @@ class UserTableViewController: UITableViewController {
               }
             }
     }
-    
 
     
         
