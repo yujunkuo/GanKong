@@ -61,26 +61,26 @@ class UserTableViewController: UITableViewController {
     }
     
     
-
+    
     private enum ProfileSection: Int {
-            case ageSexBloodType
-            case weightHeightBMI
-            case readHealthKitData
-            case saveBMI
-        }
-        
+        case ageSexBloodType
+        case weightHeightBMI
+        case readHealthKitData
+        case saveBMI
+    }
+    
     private enum ProfileDataError: Error {
-            
-            case missingBodyMassIndex
-            
-            var localizedDescription: String {
-                switch self {
-                case .missingBodyMassIndex:
-                    return "Unable to calculate body mass index with available profile data."
-                }
+        
+        case missingBodyMassIndex
+        
+        var localizedDescription: String {
+            switch self {
+            case .missingBodyMassIndex:
+                return "Unable to calculate body mass index with available profile data."
             }
         }
-        
+    }
+    
     private func updateHealthInfo() {
         loadAndDisplayAgeSexAndBloodType()
         loadAndDisplayMostRecentWeight()
@@ -88,7 +88,7 @@ class UserTableViewController: UITableViewController {
         loadAndDisplayMostRecentHeartRate()
         loadAndDisplayMostRecentStep()
     }
-        
+    
     private func loadAndDisplayAgeSexAndBloodType() {
         do {
             let userAgeSexAndBloodType = try UserController.getAgeSexAndBloodType()
@@ -100,7 +100,7 @@ class UserTableViewController: UITableViewController {
             self.displayAlert(for: error)
         }
     }
-        
+    
     private func updateLabels() {
         if let age = user.age {
             ageLabel.text = "\(age)"
@@ -155,7 +155,7 @@ class UserTableViewController: UITableViewController {
         
         
     }
-        
+    
     private func loadAndDisplayMostRecentHeight() {
         
         //1. Use HealthKit to create the Height Sample Type
@@ -174,17 +174,18 @@ class UserTableViewController: UITableViewController {
                 
                 return
             }
-                
+            
             //2. Convert the height sample to meters, save to the profile model,
             //   and update the user interface.
-            let heightInMeters = sample.quantity.doubleValue(for: HKUnit.meter())
+            let lastsample = sample.last as? HKQuantitySample
+            let heightInMeters = lastsample!.quantity.doubleValue(for: HKUnit.meter())
             self.user.heightInMeters = heightInMeters
             self.updateLabels()
         }
         
         
     }
-        
+    
     private func loadAndDisplayMostRecentWeight() {
         
         guard let weightSampleType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
@@ -201,14 +202,14 @@ class UserTableViewController: UITableViewController {
                 }
                 return
             }
-            
-            let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            let lastsample = sample.last as? HKQuantitySample
+            let weightInKilograms = lastsample!.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
             self.user.weightInKilograms = weightInKilograms
             self.updateLabels()
         }
         
     }
-        
+    
     private func loadAndDisplayMostRecentHeartRate() {
         
         guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
@@ -225,22 +226,28 @@ class UserTableViewController: UITableViewController {
                 }
                 return
             }
+            let lastsample = sample.last as? HKQuantitySample
             let heartRate = HKUnit(from: "count/min")
-            let heartRateperMins = sample.quantity.doubleValue(for: heartRate)
+            let heartRateperMins = lastsample!.quantity.doubleValue(for: heartRate)
             self.user.heartRatePerMins = heartRateperMins
-            let HRdate = sample.startDate
+            let HRdate = lastsample!.startDate
             self.user.heartRateDate = HRdate
             self.updateLabels()
-            let HRtimeStamp: TimeInterval = HRdate.timeIntervalSince1970
-            let HRtimeStampString = String(HRtimeStamp)
             
-            let heartRateFormatter = NumberFormatter()
-            let heartRateData = heartRateFormatter.string(for: heartRateperMins)
-        
-            self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString) { (response) in
+            for each in sample{
+                let each = each as? HKQuantitySample
+                let eachHRdate = each!.startDate
+                let HRtimeStamp: TimeInterval = eachHRdate.timeIntervalSince1970
+                let HRtimeStampString = String(HRtimeStamp)
                 
-              }
+                let eachheartRateperMins = each!.quantity.doubleValue(for: heartRate)
+                let heartRateFormatter = NumberFormatter()
+                let heartRateData = heartRateFormatter.string(for: eachheartRateperMins)
+                
+                self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString) { (response) in
+                }
             }
+        }
     }
     
     
@@ -260,26 +267,32 @@ class UserTableViewController: UITableViewController {
                 }
                 return
             }
+            let lastsample = sample.last as? HKQuantitySample
             let stepCount = HKUnit(from: "count")
-            let stepCountDouble = sample.quantity.doubleValue(for: stepCount)
+            let stepCountDouble = lastsample!.quantity.doubleValue(for: stepCount)
             self.user.stepCount = Int(stepCountDouble)
-            let SCdate = sample.startDate
+            let SCdate = lastsample!.startDate
             self.user.stepCountDate = SCdate
             self.updateLabels()
-            let SCtimeStamp: TimeInterval = SCdate.timeIntervalSince1970
-            let SCtimeStampString = String(SCtimeStamp)
             
-            let stepCountFormatter = NumberFormatter()
-            let stepCountData = stepCountFormatter.string(for: stepCountDouble)
-        
-            self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString) { (response) in
+            for each in sample{
+                let each = each as? HKQuantitySample
+                let eachSCdate = each!.startDate
+                let SCtimeStamp: TimeInterval = eachSCdate.timeIntervalSince1970
+                let SCtimeStampString = String(SCtimeStamp)
                 
-              }
+                let eachstepCountDouble = each!.quantity.doubleValue(for: stepCount)
+                let stepCountFormatter = NumberFormatter()
+                let stepCountData = stepCountFormatter.string(for: stepCountDouble)
+                
+                self.networkController.postHeartRateData(data: stepCountData!, time: SCtimeStampString) { (response) in
+                }
             }
+        }
     }
-
     
-        
+    
+    
     private func displayAlert(for error: Error) {
         
         let alert = UIAlertController(title: nil,
@@ -295,70 +308,70 @@ class UserTableViewController: UITableViewController {
     
     
     // MARK: - Table view data source
-
+    
     //override func numberOfSections(in tableView: UITableView) -> Int {
-         // warning Incomplete implementation, return the number of sections
-      // return
+    // warning Incomplete implementation, return the number of sections
+    // return
     //}
-
+    
     //override func tableView(_ tableView: UITableView, numberOfRowsInSection //section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-     //   return 4
-   //}
-
+    // #warning Incomplete implementation, return the number of rows
+    //   return 4
+    //}
+    
     
     //override func tableView(_ tableView: UITableView, cellForRowAt indexPath: //IndexPath) -> UITableViewCell {
-     //   let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: //indexPath)
-
-        // Configure the cell...
-      //  let information = userInformation[indexPath.row]
+    //   let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: //indexPath)
+    
+    // Configure the cell...
+    //  let information = userInformation[indexPath.row]
     //    cell.textLabel?.text = "\(information)"
-     //   return cell
+    //   return cell
     //}
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
