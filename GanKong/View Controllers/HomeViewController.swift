@@ -9,6 +9,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var session_id: String = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
+    
+    var user = User( )
+    
 
     @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
         authorizeHealthKit( )
@@ -31,6 +36,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad( ) {
         super.viewDidLoad( )
+        user.session_id = self.session_id
 
         // Do any additional setup after loading the view.
     }

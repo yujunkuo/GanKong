@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
 
     let networkController = NetworkController( )
     
+    var session_id: String = "Nil"
+    
     @IBOutlet var accountInput: UITextField!
     @IBOutlet var passwordInput: UITextField!
     
@@ -22,16 +24,16 @@ class LoginViewController: UIViewController {
                 (return_list) in
                 if let status_code = return_list?[0],
                     let session_id = return_list?[1]{
-                    if status_code as! Int == 200 {
+                        if status_code as! Int == 200 {
                             DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+                                UserDefaults.standard.set(session_id, forKey: "session_id")
+                                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
                             }
-                            UserDefaults.standard.set(session_id, forKey: "session_id")
                         }
                         else {
                             print(status_code)
                             DispatchQueue.main.async {
-                            self.errorLabel.isHidden = false
+                                self.errorLabel.isHidden = false
                             }
                         }
                     }
@@ -41,19 +43,40 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //    let tabBarController = segue.destination as! UITabBarController
+    //    let navController = tabBarController.viewControllers?.first as?
+     //        UINavigationController
+     //   let homeVC = navController?.viewControllers.first as?
+    //         HomeViewController
+    //    homeVC?.session_id = session_id
+   // }
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad( ) {
         super.viewDidLoad( )
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // auto login
+        print("Appear")
         if (UserDefaults.standard.value(forKey: "session_id") != nil) {
-            let session_id = UserDefaults.standard.value(forKey: "session_id")
-            DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            session_id = UserDefaults.standard.value(forKey: "session_id") as! String
+            self.networkController.checkLogin(session_id: session_id) {
+                (status_code) in
+                print(status_code!)
+                if status_code == 200 {
+                    DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+                    }
+                } else {
+                    print("session is not avalible")
+                }
             }
         }
     }
-        // Do any additional setup after loading the view.
+    
    
     
 
