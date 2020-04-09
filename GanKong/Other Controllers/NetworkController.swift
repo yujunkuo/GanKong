@@ -141,36 +141,52 @@ class NetworkController {
         task.resume( )
     }
     
-    func postHeartRateData (data: String, time: String, completion: @escaping(Int?) -> Void) {
-        let heartRateURL = baseURL.appendingPathComponent("heart_rate/1")
+    func postHeartRateData (data: String, time: String, session_id: String, completion: @escaping(Int?) -> Void) {
+        let heartRateURL = baseURL.appendingPathComponent("heart_rate")
         var request = URLRequest(url: heartRateURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField:
            "Content-Type")
-        let data: [String: String] = ["heart_rate_data": data, "heart_rate_time": time]
+        let data: [String: String] = ["session_id": session_id ,"heart_rate_data": data, "heart_rate_time": time]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
-        let task = URLSession.shared.dataTask(with: request) { (data,
-        response, error) in
-            
+        let task = URLSession.shared.dataTask(with: request)
+        { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String: Int],
+                    let status_code = jsonDictionary["status_code"] {
+                            completion(status_code)
+                    } else {
+                        completion(nil)
+                    }
         }
         task.resume( )
     }
     
-    func postStepCountData (data: String, time: String, completion: @escaping(Int?) -> Void) {
-        let stepCountURL = baseURL.appendingPathComponent("step_count/1")
+    func postStepCountData (data: String, time: String, session_id: String, completion: @escaping(Int?) -> Void) {
+        let stepCountURL = baseURL.appendingPathComponent("step_count")
         var request = URLRequest(url: stepCountURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField:
            "Content-Type")
-        let data: [String: String] = ["step_count_data": data, "step_count_time": time]
+        let data: [String: String] = ["session_id": session_id ,"step_count_data": data, "step_count_time": time]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
-        let task = URLSession.shared.dataTask(with: request) { (data,
-        response, error) in
-            
+        let task = URLSession.shared.dataTask(with: request)
+        { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String: Int],
+                    let status_code = jsonDictionary["status_code"] {
+                            completion(status_code)
+                    } else {
+                        completion(nil)
+                    }
         }
         task.resume( )
     }
