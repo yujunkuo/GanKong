@@ -147,7 +147,7 @@ class NetworkController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField:
            "Content-Type")
-        let data: [String: String] = ["session_id": session_id ,"heart_rate_data": data, "heart_rate_time": time]
+        let data: [String: String] = ["session_id": session_id ,"heart_rate": data, "heart_rate_time": time]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
@@ -172,7 +172,7 @@ class NetworkController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField:
            "Content-Type")
-        let data: [String: String] = ["session_id": session_id ,"step_count_data": data, "step_count_time": time]
+        let data: [String: String] = ["session_id": session_id ,"step_count": data, "step_count_time": time]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
