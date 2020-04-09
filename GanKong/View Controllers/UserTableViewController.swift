@@ -234,21 +234,25 @@ class UserTableViewController: UITableViewController {
             self.user.heartRateDate = HRdate
             self.updateLabels()
             
+            let now = NSDate()
+            let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
+            let weekAgo = nowTimeStamp - 604800
             for each in sample{
                 let each = each as? HKQuantitySample
                 let eachHRdate = each!.startDate
                 let HRtimeStamp: TimeInterval = eachHRdate.timeIntervalSince1970
-                let HRtimeStampString = String(HRtimeStamp)
-                
-                let eachheartRateperMins = each!.quantity.doubleValue(for: heartRate)
-                let heartRateFormatter = NumberFormatter()
-                let heartRateData = heartRateFormatter.string(for: eachheartRateperMins)
-                
-                self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString, session_id: self.user.session_id!) {
+                if(HRtimeStamp > weekAgo){
+                    let HRtimeStampString = String(HRtimeStamp)
+                    let eachheartRateperMins = each!.quantity.doubleValue(for: heartRate)
+                    let heartRateFormatter = NumberFormatter()
+                    let heartRateData = heartRateFormatter.string(for: eachheartRateperMins)
+                    
+                    self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString, session_id: self.user.session_id!) {
                         (status_code) in
-                            print(status_code!)
+                        print(status_code!)
                     }
                 }
+            }
         }
     }
     
@@ -277,19 +281,24 @@ class UserTableViewController: UITableViewController {
             self.user.stepCountDate = SCdate
             self.updateLabels()
             
+            let now = NSDate()
+            let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
+            let weekAgo = nowTimeStamp - 604800
             for each in sample{
                 let each = each as? HKQuantitySample
                 let eachSCdate = each!.startDate
                 let SCtimeStamp: TimeInterval = eachSCdate.timeIntervalSince1970
-                let SCtimeStampString = String(SCtimeStamp)
-                
-                let eachstepCountDouble = each!.quantity.doubleValue(for: stepCount)
-                let stepCountFormatter = NumberFormatter()
-                let stepCountData = stepCountFormatter.string(for: eachstepCountDouble)
-                
-                self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString, session_id: self.user.session_id!) {
+                if(SCtimeStamp > weekAgo){
+                    let SCtimeStampString = String(SCtimeStamp)
+                    
+                    let eachstepCountDouble = each!.quantity.doubleValue(for: stepCount)
+                    let stepCountFormatter = NumberFormatter()
+                    let stepCountData = stepCountFormatter.string(for: eachstepCountDouble)
+                    
+                    self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString, session_id: self.user.session_id!) {
                         (status_code) in
-                            print(status_code!)
+                        print(status_code!)
+                    }
                 }
             }
         }
