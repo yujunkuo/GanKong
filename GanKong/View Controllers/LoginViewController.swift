@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     let networkController = NetworkController( )
     
@@ -18,6 +18,11 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordInput: UITextField!
     
     @IBOutlet var errorLabel: UILabel!
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder( )
+        return true
+    }
     
     @IBAction func loginButton(_ sender: UIButton) {
         self.networkController.login(account: accountInput.text!, password: passwordInput.text!) {

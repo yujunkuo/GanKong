@@ -42,7 +42,7 @@ class NetworkController {
     
     
     // Register
-    func register (account: String, password: String, completion: @escaping(Int?) -> Void) {
+    func register (account: String, password: String, completion: @escaping([Any]?) -> Void) {
         let registerURL = baseURL.appendingPathComponent("register")
         var request = URLRequest(url: registerURL)
         request.httpMethod = "POST"
@@ -57,9 +57,10 @@ class NetworkController {
                     if let data = data,
                         let jsonDictionary = try?
                         JSONSerialization.jsonObject(with: data) as?
-                        [String: Int],
-                        let status_code = jsonDictionary["status_code"] {
-                                completion(status_code)
+                        [String: Any],
+                        let status_code = jsonDictionary["status_code"] as? Int,
+                            let session_id = jsonDictionary["session_id"] as? String{
+                                completion([status_code, session_id])
                         } else {
                             completion(nil)
                         }

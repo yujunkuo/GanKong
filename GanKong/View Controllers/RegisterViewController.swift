@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     let networkController = NetworkController( )
     
@@ -17,19 +17,26 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet var errorLabel: UILabel!
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder( )
+        return true
+    }
+    
     @IBAction func registerButton(_ sender: UIButton) {
         self.networkController.register(account: accountInput.text!, password: passwordInput.text!) {
-                (status_code) in
-                    if let status_code = status_code {
-                        if status_code == 200 {
+                (return_list) in
+                if let status_code = return_list?[0],
+                    let session_id = return_list?[1]{
+                        if status_code as! Int == 200 {
                             DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "RegisterSegue", sender: nil)
+                                UserDefaults.standard.set(session_id, forKey: "session_id")
+                                self.performSegue(withIdentifier: "RegisterSegue", sender: nil)
                             }
                         }
                         else {
                             print(status_code)
                             DispatchQueue.main.async {
-                            self.errorLabel.isHidden = false
+                                self.errorLabel.isHidden = false
                             }
                         }
                     }
