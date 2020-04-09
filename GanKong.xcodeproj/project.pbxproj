@@ -372,6 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GanKong/GanKong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3V3C6FR955;
 				INFOPLIST_FILE = GanKong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -390,6 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GanKong/GanKong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3V3C6FR955;
 				INFOPLIST_FILE = GanKong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
