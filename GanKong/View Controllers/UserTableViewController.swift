@@ -283,9 +283,9 @@ class UserTableViewController: UITableViewController {
                 
                 let eachstepCountDouble = each!.quantity.doubleValue(for: stepCount)
                 let stepCountFormatter = NumberFormatter()
-                let stepCountData = stepCountFormatter.string(for: stepCountDouble)
+                let stepCountData = stepCountFormatter.string(for: eachstepCountDouble)
                 
-                self.networkController.postHeartRateData(data: stepCountData!, time: SCtimeStampString) { (response) in
+                self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString) { (response) in
                 }
             }
         }
