@@ -244,9 +244,11 @@ class UserTableViewController: UITableViewController {
                 let heartRateFormatter = NumberFormatter()
                 let heartRateData = heartRateFormatter.string(for: eachheartRateperMins)
                 
-                self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString) { (response) in
+                self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString, session_id: self.user.session_id!) {
+                        (status_code) in
+                            print(status_code!)
+                    }
                 }
-            }
         }
     }
     
@@ -285,7 +287,9 @@ class UserTableViewController: UITableViewController {
                 let stepCountFormatter = NumberFormatter()
                 let stepCountData = stepCountFormatter.string(for: eachstepCountDouble)
                 
-                self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString) { (response) in
+                self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString, session_id: self.user.session_id!) {
+                        (status_code) in
+                            print(status_code!)
                 }
             }
         }
