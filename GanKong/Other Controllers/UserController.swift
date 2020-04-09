@@ -43,19 +43,15 @@ class UserController {
     
     class func getMostRecentSample(for sampleType: HKSampleType,
                                    completion: @escaping (HKQuantitySample?, Error?) -> Swift.Void) {
-        
         var myAnchor = HKQueryAnchor.init(fromValue: 0)
-        
         let anchorQuery = HKAnchoredObjectQuery(type: sampleType,
                                                 predicate: nil,
                                                 anchor: myAnchor,
                                                 limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
                                                     
-                                                    if let newAnchor = newAnchor {
-                                                        myAnchor = newAnchor
-                                                    }
-                                                    
                                                     DispatchQueue.main.async {
+                                                        
+                                                        myAnchor = newAnchor!
                                                         
                                                         guard let samples = samplesOrNil,
                                                             let mostRecentSample = samples.last as? HKQuantitySample else {
@@ -72,27 +68,23 @@ class UserController {
                 
                 myAnchor = newAnchor!
                 
-                
-                DispatchQueue.main.async {
-                    
-                    myAnchor = newAnchor!
-                    
-                    guard let samples = samplesOrNil,
-                        let mostRecentSample = samples.last as?
-                        HKQuantitySample else {
-                            completion(nil, errorOrNil)
-                            return
-                    }
-                    
-                    completion(mostRecentSample, nil)
+                guard let samples = samplesOrNil,
+                    let mostRecentSample = samples.last as? HKQuantitySample else {
+                        
+                        completion(nil, errorOrNil)
+                        return
                 }
+                completion(mostRecentSample, nil)
             }
-            HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
-                debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
-            })
-            HKHealthStore().execute(anchorQuery)
+            
+            
+            
         }
+        HKHealthStore().execute(anchorQuery)
+        HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
+            debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
+        })
         
         
+    }
 }
-

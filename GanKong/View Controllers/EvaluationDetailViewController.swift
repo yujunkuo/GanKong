@@ -22,7 +22,9 @@ class EvaluationDetailViewController: UIViewController {
     
     override func viewDidLoad( ) {
         super.viewDidLoad( )
-        //getMostRecentSample(for: <#T##HKSampleType#>, completion: <#T##(HKQuantitySample?, Error?) -> Void#>)
+//        getMostRecentSample(for: HKSampleType) { (HKQuantitySample?, Error?) in
+//            <#code#>
+//        }
         networkController.fetchHeartRateData { (heartRateData) in
                   if let heartRateData = heartRateData {
                     self.updateUI(with: heartRateData)

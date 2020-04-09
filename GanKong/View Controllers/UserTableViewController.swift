@@ -14,7 +14,6 @@ class UserTableViewController: UITableViewController {
     override func viewDidLoad( ) {
         super.viewDidLoad( )
         updateHealthInfo( )
-
     }
     
     let networkController = NetworkController( )
