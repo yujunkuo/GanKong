@@ -237,6 +237,8 @@ class UserTableViewController: UITableViewController {
             let now = NSDate()
             let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
             let weekAgo = nowTimeStamp - 604800
+            // 604800 one week
+            // 86400 one day
             for each in sample{
                 let each = each as? HKQuantitySample
                 let eachHRdate = each!.startDate
@@ -284,6 +286,8 @@ class UserTableViewController: UITableViewController {
             let now = NSDate()
             let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
             let weekAgo = nowTimeStamp - 604800
+            //604800 one week
+            //86400 one day
             for each in sample{
                 let each = each as? HKQuantitySample
                 let eachSCdate = each!.startDate
@@ -297,7 +301,7 @@ class UserTableViewController: UITableViewController {
                     
                     self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString, session_id: self.user.session_id!) {
                         (status_code) in
-                        print(status_code!)
+                            print(status_code!)
                     }
                 }
             }
