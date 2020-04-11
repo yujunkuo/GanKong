@@ -50,15 +50,16 @@ class UserController {
                                                 limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
                                                     
                                                     DispatchQueue.main.async {
-                                                        
+                                                        print(sampleType)
                                                         myAnchor = newAnchor!
                                                         
                                                         guard let samples = samplesOrNil,
                                                             let mostRecentSample = samples.last as? HKQuantitySample else {
-                                                                
+                                                                print("Nil for", sampleType)
                                                                 completion(nil, errorOrNil)
                                                                 return
                                                         }
+                                                        print("Not nil for", sampleType)
                                                         completion(samples, nil)
                                                     }
         }
@@ -81,10 +82,55 @@ class UserController {
             
         }
         HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
-        debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
-        HKHealthStore().execute(anchorQuery)
+            debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
+            HKHealthStore().execute(anchorQuery)
         })
         
         
+    }
+    class func getCategoryTypeData(for sampleType: HKCategoryType, completion: @escaping ([HKSample]?, Error?) -> Swift.Void){
+        var myAnchor = HKQueryAnchor.init(fromValue: 0)
+        let anchorQuery = HKAnchoredObjectQuery(type: sampleType,
+                                                predicate: nil,
+                                                anchor: myAnchor,
+                                                limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
+                                                    
+                                                    DispatchQueue.main.async {
+                                                        
+                                                        print(sampleType)
+                                                        myAnchor = newAnchor!
+                                                        
+                                                        guard let result = samplesOrNil else {
+                                                            print("Nil for", sampleType)
+                                                            completion(nil, errorOrNil)
+                                                            return
+                                                        }
+                                                        print("Not nil for", sampleType)
+                                                        completion(result, nil)
+                                                    }
+        }
+        anchorQuery.updateHandler = { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
+            
+            DispatchQueue.main.async {
+                
+                print(sampleType)
+                myAnchor = newAnchor!
+                
+                guard let result = samplesOrNil else {
+                    print("Nil for", sampleType)
+                    completion(nil, errorOrNil)
+                    return
+                }
+                print("Not nil for", sampleType)
+                completion(result, nil)
+            }
+            
+            
+            
+        }
+        HKHealthStore().enableBackgroundDelivery(for: sampleType, frequency: .immediate, withCompletion:  { (success: Bool, error: Error?) in
+            debugPrint("enableBackgroundDeliveryForType handler called for \(sampleType) - success: \(success), error: \(error)")
+            HKHealthStore().execute(anchorQuery)
+        })
     }
 }

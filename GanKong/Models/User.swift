@@ -20,6 +20,10 @@ class User {
     var heartRateDate: Date?
     var stepCount: Int?
     var stepCountDate: Date?
+    var inBedTime: Bool?
+    var asleepTime: Bool?
+    var sleepStart: Date?
+    var sleepEnd: Date?
     var session_id: String?
     
     var bodyMassIndex: Double? {

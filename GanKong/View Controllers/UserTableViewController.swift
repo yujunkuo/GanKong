@@ -35,7 +35,10 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var bodyMassIndexLabel: UILabel!
     @IBOutlet var heartRateLabel: UILabel!
     @IBOutlet var HRDateLabel: UILabel!
-    @IBOutlet var HRNewLabel: UILabel!
+//    @IBOutlet var inBedLabel: UILabel!
+//    @IBOutlet var asleepLabel: UILabel!
+    @IBOutlet var sleepStartLabel: UILabel!
+    @IBOutlet var sleepEndLabel: UILabel!
     
     @IBAction func logoutButton(_ sender: UIButton) {
         self.networkController.logout(session_id: self.user.session_id!) {
@@ -83,10 +86,17 @@ class UserTableViewController: UITableViewController {
     
     private func updateHealthInfo() {
         loadAndDisplayAgeSexAndBloodType()
+        print("Age&Sex&BloodType Done")
         loadAndDisplayMostRecentWeight()
+        print("Weight Done")
         loadAndDisplayMostRecentHeight()
+        print("Height Done")
         loadAndDisplayMostRecentHeartRate()
+        print("HR Done")
         loadAndDisplayMostRecentStep()
+        print("Step Done")
+        loadAndDisplayMostRecentSleepAnalysis()
+        print("Sleep Done")
     }
     
     private func loadAndDisplayAgeSexAndBloodType() {
@@ -153,6 +163,18 @@ class UserTableViewController: UITableViewController {
             self.SCDateLabel.text = dateFormatter.string(from: SCDate)
         }
         
+        if let sleepStartDate = user.sleepStart {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
+            self.sleepStartLabel.text = dateFormatter.string(from: sleepStartDate)
+        }
+        
+        if let sleepEndDate = user.sleepEnd {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd a hh:mm:ss"
+            self.sleepEndLabel.text = dateFormatter.string(from: sleepEndDate)
+        }
+        
         
     }
     
@@ -165,6 +187,12 @@ class UserTableViewController: UITableViewController {
         }
         
         UserController.getMostRecentSample(for: heightSampleType) { (sample, error) in
+            
+            if (sample != nil){
+                print("Got Height")
+            }else{
+                print("Height Not Found")
+            }
             
             guard let sample = sample else {
                 
@@ -195,6 +223,12 @@ class UserTableViewController: UITableViewController {
         
         UserController.getMostRecentSample(for: weightSampleType) { (sample, error) in
             
+            if (sample != nil){
+                print("Got Weight")
+            }else{
+                print("Weight Not Found")
+            }
+            
             guard let sample = sample else {
                 
                 if let error = error {
@@ -219,6 +253,12 @@ class UserTableViewController: UITableViewController {
         
         UserController.getMostRecentSample(for: heartRateType) { (sample, error) in
             
+            if (sample != nil){
+                print("Got HR")
+            }else{
+                print("HR Found")
+            }
+            
             guard let sample = sample else {
                 
                 if let error = error {
@@ -231,6 +271,7 @@ class UserTableViewController: UITableViewController {
             let heartRateperMins = lastsample!.quantity.doubleValue(for: heartRate)
             self.user.heartRatePerMins = heartRateperMins
             let HRdate = lastsample!.startDate
+            print(type(of: HRdate))
             self.user.heartRateDate = HRdate
             self.updateLabels()
             
@@ -267,6 +308,12 @@ class UserTableViewController: UITableViewController {
         }
         
         UserController.getMostRecentSample(for: stepCountType) { (sample, error) in
+            
+            if (sample != nil){
+                print("Got Step")
+            }else{
+                print("Step Not Found")
+            }
             
             guard let sample = sample else {
                 
@@ -305,6 +352,52 @@ class UserTableViewController: UITableViewController {
                     }
                 }
             }
+        }
+    }
+    
+    private func loadAndDisplayMostRecentSleepAnalysis() {
+        guard let sleepAnalysisType = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis) else {
+            print("Sleep Analysis Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getCategoryTypeData(for: sleepAnalysisType) {(sample, error) in
+            if (sample != nil){
+                print("Got Sleep")
+            }else{
+                print("Sleep Not Found ")
+            }
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
+                return
+            }
+            
+            for item in sample {
+                if let data = item as? HKCategorySample {
+                    print(data)
+                    let inBed = data.value == HKCategoryValueSleepAnalysis.inBed.rawValue
+                    print("inbed:", inBed)
+                    let asleep = data.value == HKCategoryValueSleepAnalysis.asleep.rawValue
+                    print("asleep:", asleep)
+                    let startDate = data.startDate
+                    print("startDate:", startDate)
+                    let endDate = data.endDate
+                    print("endDate:", endDate)
+                }
+            }
+            let lastSample = sample.last as? HKCategorySample
+            let inBed = lastSample!.value == HKCategoryValueSleepAnalysis.inBed.rawValue
+            let asleep = lastSample!.value == HKCategoryValueSleepAnalysis.asleep.rawValue
+            let sleepStartDate = lastSample!.startDate
+            let sleepEndDate = lastSample!.endDate
+            self.user.inBedTime = inBed
+            self.user.asleepTime = asleep
+            self.user.sleepStart = sleepStartDate
+            self.user.sleepEnd = sleepEndDate
+            self.updateLabels()
         }
     }
     
