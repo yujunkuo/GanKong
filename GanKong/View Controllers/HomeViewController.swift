@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class HomeViewController: UIViewController {
     
     var session_id: String = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
-    
     var user = User( )
+    
+    let locationManager = CLLocationManager()
     
 
     @IBAction func AuthorizationButtonAction(_ sender: UIButton) {

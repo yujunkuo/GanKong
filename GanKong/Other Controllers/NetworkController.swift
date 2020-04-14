@@ -191,5 +191,30 @@ class NetworkController {
         }
         task.resume( )
     }
+    
+    func postSleepData (inBed: Bool, startDate: String, endDate: String, session_id: String, completion: @escaping(Int?) -> Void) {
+        let stepCountURL = baseURL.appendingPathComponent("sleep")
+        var request = URLRequest(url: stepCountURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["session_id": session_id ,"in_bed": String(inBed), "start_date": startDate, "end_date": endDate]
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request)
+        { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String: Int],
+                    let status_code = jsonDictionary["status_code"] {
+                            completion(status_code)
+                    } else {
+                        completion(nil)
+                    }
+        }
+        task.resume( )
+    }
 }
 

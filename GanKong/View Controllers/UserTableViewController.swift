@@ -375,8 +375,8 @@ class UserTableViewController: UITableViewController {
                 return
             }
             
-            for item in sample {
-                if let data = item as? HKCategorySample {
+            for each in sample {
+                if let data = each as? HKCategorySample {
                     print(data)
                     let inBed = data.value == HKCategoryValueSleepAnalysis.inBed.rawValue
                     print("inbed:", inBed)
@@ -386,6 +386,24 @@ class UserTableViewController: UITableViewController {
                     print("startDate:", startDate)
                     let endDate = data.endDate
                     print("endDate:", endDate)
+                    
+                    let now = NSDate()
+                    let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
+                    let weekAgo = nowTimeStamp - 604800
+                    //604800 one week
+                    //86400 one day
+                    
+                    let startDateStamp: TimeInterval = startDate.timeIntervalSince1970
+                    let endDateStamp: TimeInterval = endDate.timeIntervalSince1970
+                    if (startDateStamp > weekAgo && endDateStamp > weekAgo) {
+                        let startDateStampString = String(startDateStamp)
+                        let endDateStampString = String(endDateStamp)
+                    
+                        self.networkController.postSleepData(inBed: inBed, startDate: startDateStampString, endDate: endDateStampString, session_id: self.user.session_id!) {
+                            (status_code) in
+                                print(status_code!)
+                        }
+                    }
                 }
             }
             let lastSample = sample.last as? HKCategorySample
