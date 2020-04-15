@@ -284,7 +284,7 @@ class UserTableViewController: UITableViewController {
                 let each = each as? HKQuantitySample
                 let eachHRdate = each!.startDate
                 let HRtimeStamp: TimeInterval = eachHRdate.timeIntervalSince1970
-                if(HRtimeStamp > weekAgo){
+                if (HRtimeStamp > weekAgo){
                     let HRtimeStampString = String(HRtimeStamp)
                     let eachheartRateperMins = each!.quantity.doubleValue(for: heartRate)
                     let heartRateFormatter = NumberFormatter()
@@ -292,7 +292,9 @@ class UserTableViewController: UITableViewController {
                     
                     self.networkController.postHeartRateData(data: heartRateData!, time: HRtimeStampString, session_id: self.user.session_id!) {
                         (status_code) in
-                        print(status_code!)
+                        if (status_code != nil) {
+                            print(status_code!)
+                        }
                     }
                 }
             }
@@ -348,7 +350,9 @@ class UserTableViewController: UITableViewController {
                     
                     self.networkController.postStepCountData(data: stepCountData!, time: SCtimeStampString, session_id: self.user.session_id!) {
                         (status_code) in
-                            print(status_code!)
+                            if (status_code != nil) {
+                                print(status_code!)
+                            }
                     }
                 }
             }
@@ -401,7 +405,9 @@ class UserTableViewController: UITableViewController {
                     
                         self.networkController.postSleepData(inBed: inBed, startDate: startDateStampString, endDate: endDateStampString, session_id: self.user.session_id!) {
                             (status_code) in
-                                print(status_code!)
+                                if (status_code != nil) {
+                                    print(status_code!)
+                                }
                         }
                     }
                 }
