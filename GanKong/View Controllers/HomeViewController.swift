@@ -10,13 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate {
+class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate{
     
     var session_id: String = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
     var user = User( )
     
     let locationManager = CLLocationManager( )
-    
 
     @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
         authorizeHealthKit( )
@@ -66,6 +65,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation( )
         }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -90,7 +90,28 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-
+    @IBOutlet var popDrink: UIView!
+    @IBAction func popDrink(_ sender: Any){
+        let drinkPopVC = storyboard?.instantiateViewController(withIdentifier: "DrinkPopoverViewController") as! DrinkPopoverViewController
+        drinkPopVC.preferredContentSize = CGSize(width: 10, height: 10)
+        let navController = UINavigationController(rootViewController: drinkPopVC)
+        navController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        let popOver = navController.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.barButtonItem = sender as? UIBarButtonItem
+        
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
+        return .none
+    }
+    
+    @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
+        
+    }
+    
     /*
     // MARK: - Navigation
 

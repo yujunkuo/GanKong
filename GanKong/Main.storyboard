@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="J5R-eU-8Xx">
+            <objects>
+                <navigationController id="6fZ-Ac-KD8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TRu-2s-DcG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pDW-qz-a3O" kind="relationship" relationship="rootViewController" id="9En-B8-TMU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Scm-Ba-oyn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-926" y="-1833"/>
+        </scene>
         <!--HomeViewController-->
         <scene sceneID="gmb-3H-IZ7">
             <objects>
@@ -26,10 +42,13 @@
                                     <action selector="AuthorizationButtonAction:" destination="pDW-qz-a3O" eventType="touchUpInside" id="a5z-z1-uRw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVv-Cc-yOl">
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVv-Cc-yOl">
                                 <rect key="frame" x="335" y="140" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Drink"/>
+                                <connections>
+                                    <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -45,20 +64,54 @@
             </objects>
             <point key="canvasLocation" x="-926.08695652173924" y="-1041.2946428571429"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="FDf-wR-LrS">
+        <!--Drink Popover View Controller-->
+        <scene sceneID="Kbs-Nq-gsR">
             <objects>
-                <viewController id="Oj0-0X-pwh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IUF-Fo-IPz">
+                <viewController storyboardIdentifier="DrinkPopoverViewController" id="sab-vf-yWA" customClass="DrinkPopoverViewController" customModule="GanKong" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="DrinkPopoverViewController" id="MbU-qi-Vcr" customClass="DrinkPopoveViewController">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="7fD-gn-P4h"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2u-A7-a9s">
+                                <rect key="frame" x="184" y="155" width="210" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="飲品類別" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUz-59-boM">
+                                <rect key="frame" x="20" y="155" width="125" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-VM-3Ec">
+                                <rect key="frame" x="20" y="344" width="125" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="sab-vf-yWA" eventType="touchDown" id="wDn-5q-4ja"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-R4-X5l">
+                                <rect key="frame" x="269" y="344" width="125" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="sab-vf-yWA" eventType="touchDown" id="Wot-Le-cbW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.77411776781082153" green="0.94416725635528564" blue="0.94358670711517334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="umc-66-s71"/>
                     </view>
+                    <connections>
+                        <outlet property="drinkSelectField" destination="E2u-A7-a9s" id="JYL-fc-pp0"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dmv-js-Cah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aG-rV-bTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="-1051"/>
+            <point key="canvasLocation" x="160.86956521739131" y="-1041.2946428571429"/>
         </scene>
         <!--ReportTableViewController-->
         <scene sceneID="Raq-Yy-kFG">
@@ -1038,7 +1091,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DXT-bc-FJe"/>
+        <segue reference="kbn-ay-kag"/>
+        <segue reference="9En-B8-TMU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>

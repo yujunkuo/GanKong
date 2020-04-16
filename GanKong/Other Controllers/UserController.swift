@@ -54,7 +54,7 @@ class UserController {
                                                         myAnchor = newAnchor!
                                                         
                                                         guard let samples = samplesOrNil,
-                                                            let mostRecentSample = samples.last as? HKQuantitySample else {
+                                                            let _ = samples.last as? HKQuantitySample else {
                                                                 print("Nil for", sampleType)
                                                                 completion(nil, errorOrNil)
                                                                 return
@@ -70,8 +70,8 @@ class UserController {
                 myAnchor = newAnchor!
                 
                 guard let samples = samplesOrNil,
-                    let mostRecentSample = samples.last as? HKQuantitySample else {
-                        
+                    let _ = samples.last as? HKQuantitySample else {
+                        print("Nil for", sampleType)
                         completion(nil, errorOrNil)
                         return
                 }
