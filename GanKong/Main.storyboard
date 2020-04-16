@@ -101,12 +101,26 @@
                                     <action selector="doneButtonPressed:" destination="sab-vf-yWA" eventType="touchDown" id="Wot-Le-cbW"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otA-4z-6nZ">
+                                <rect key="frame" x="184" y="242" width="210" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="飲品容量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0s-eI-9pK">
+                                <rect key="frame" x="20" y="247" width="125" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77411776781082153" green="0.94416725635528564" blue="0.94358670711517334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="umc-66-s71"/>
                     </view>
                     <connections>
                         <outlet property="drinkSelectField" destination="E2u-A7-a9s" id="JYL-fc-pp0"/>
+                        <outlet property="volumneSelectField" destination="otA-4z-6nZ" id="B2T-UF-1Rm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aG-rV-bTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
