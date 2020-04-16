@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Privacy — Photo Library Usage Description</key>
+	<string>We have to use the camera to record and recognize your meal</string>
+	<key>Privacy — Photo Library Additions Usage Description</key>
+	<string>We have to use the camera to record and recognize your meal</string>
+	<key>Privacy — Camera Usage Description</key>
+	<string>We have to use the camera to record and recognize your meal</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>zh_TW</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
