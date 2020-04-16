@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GanKong.xcodeproj">
+      location = "group:/Users/shijunyan/Desktop/&#x5c08;&#x6848;/GanKong/GanKong/Main.storyboard">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
