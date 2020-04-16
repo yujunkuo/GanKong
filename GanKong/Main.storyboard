@@ -50,15 +50,56 @@
                                     <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXa-iB-1s0">
+                                <rect key="frame" x="56.5" y="317" width="301" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="B5B-65-p9W"/>
+                                    <constraint firstAttribute="width" constant="301" id="ICj-Vs-6VO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btB-Nm-DfZ">
+                                <rect key="frame" x="56.5" y="420" width="301" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="301" id="a1V-Lf-Ctc"/>
+                                    <constraint firstAttribute="height" constant="72" id="jm1-vh-Gpj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTm-PY-cd4">
+                                <rect key="frame" x="56" y="219" width="231" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="aPO-WK-CNj"/>
+                                    <constraint firstAttribute="width" constant="231" id="soo-6W-ZxF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="SXa-iB-1s0" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="CyM-wH-tU3"/>
+                            <constraint firstItem="SXa-iB-1s0" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-95" id="ERx-3J-QMa"/>
+                            <constraint firstItem="kTm-PY-cd4" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="-35.5" id="Gha-ca-KDD"/>
                             <constraint firstItem="nDO-CQ-34t" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="300" id="IUc-aD-Tk6"/>
+                            <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="8" id="WdQ-eP-XkU"/>
                             <constraint firstItem="nDO-CQ-34t" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="fiE-BG-ykg"/>
+                            <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="hYA-M4-Nfv"/>
+                            <constraint firstItem="kTm-PY-cd4" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-193" id="umh-bh-Xou"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JjG-hX-Dsa"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="wDi-cw-Ilz"/>
+                    <connections>
+                        <outlet property="currentLocation" destination="kTm-PY-cd4" id="VDD-4O-suf"/>
+                        <outlet property="weatherDescription" destination="btB-Nm-DfZ" id="Z7q-bm-HEw"/>
+                        <outlet property="weatherMain" destination="SXa-iB-1s0" id="tXF-OS-60R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sz-rN-vqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

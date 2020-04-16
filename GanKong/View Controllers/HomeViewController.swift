@@ -23,6 +23,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
     @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
         authorizeHealthKit( )
     }
+    
+    @IBOutlet var currentLocation: UILabel!
+    @IBOutlet var weatherMain: UILabel!
+    @IBOutlet var weatherDescription: UILabel!
+    
 
     private func authorizeHealthKit( ) {
         HealthKitAuthorization.authorizeHealthKit { (authorized, error) in
@@ -78,10 +83,59 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
+        let now = NSDate()
+        let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
+        
+        if (UserDefaults.standard.value(forKey: "weather_update_time") != nil) {
+              let weather_update_time = UserDefaults.standard.value(forKey: "weather_update_time") as! Double
+                if nowTimeStamp - Double(weather_update_time) > 3600 {
+                self.networkController.getWeatherData(lat: locValue.latitude, lon: locValue.longitude) {
+                    (return_dict_list) in
+                    let main: String = return_dict_list![0]["main"] as! String
+                    let description: String = return_dict_list![0]["description"] as! String
+                    print(main)
+                    print(description)
+                    DispatchQueue.main.async {
+                        self.weatherMain.text = "Current Weather: \(main)"
+                        self.weatherDescription.text = "Description: \(description)"
+                    }
+                    UserDefaults.standard.set(main, forKey: "weather_main")
+                    UserDefaults.standard.set(description, forKey: "weather_description")
+                    UserDefaults.standard.set(nowTimeStamp, forKey: "weather_update_time")
+                    }
+                }
+              else {
+                DispatchQueue.main.async {
+                    self.weatherMain.text = "Current Weather: \(String(describing: UserDefaults.standard.value(forKey: "weather_main")))"
+                    self.weatherDescription.text = "Description: \(String(describing: UserDefaults.standard.value(forKey: "weather_description")))"
+                    }
+                print("last update time: \(weather_update_time)")
+            }
+        }
+        else {
+            self.networkController.getWeatherData(lat: locValue.latitude, lon: locValue.longitude) {
+                (return_dict_list) in
+                    let main: String = return_dict_list![0]["main"] as! String
+                    let description: String = return_dict_list![0]["description"] as! String
+                    print(main)
+                    print(description)
+                    DispatchQueue.main.async {
+                        self.weatherMain.text = "Current Weather: \(main)"
+                        self.weatherDescription.text = "Description: \(description)"
+                    }
+                    UserDefaults.standard.set(main, forKey: "weather_main")
+                    UserDefaults.standard.set(description, forKey: "weather_description")
+                    UserDefaults.standard.set(nowTimeStamp, forKey: "weather_update_time")
+            }
+        }
+        
         guard let location: CLLocation = manager.location else { print("error"); return }
         fetchCityAndCountry(from: location) { city, country, error in
             guard let city = city, let country = country, error == nil else { return }
             print(city + ", " + country)
+            DispatchQueue.main.async {
+                self.currentLocation.text = "Location: \(city), \(country)"
+            }
         }
     }
     
