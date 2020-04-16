@@ -147,7 +147,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         }
     }
     
-    @IBOutlet var popDrink: UIView!
     @IBAction func popDrink(_ sender: Any){
         let drinkPopVC = storyboard?.instantiateViewController(withIdentifier: "DrinkPopoverViewController") as! DrinkPopoverViewController
         drinkPopVC.preferredContentSize = CGSize(width: 10, height: 10)
@@ -161,12 +160,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         self.present(navController, animated: true, completion: nil)
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
-        return .none
+    @IBAction func popWater(_ sender: Any){
+        let waterPopVC = storyboard?.instantiateViewController(withIdentifier: "WaterPopoverViewController") as! WaterPopoverViewController
+        waterPopVC.preferredContentSize = CGSize(width: 10, height: 10)
+        let navController = UINavigationController(rootViewController: waterPopVC)
+        navController.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        let popOver = navController.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.barButtonItem = sender as? UIBarButtonItem
+        
+        self.present(navController, animated: true, completion: nil)
     }
     
-    @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
-        
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
+        return .none
     }
     
     /*

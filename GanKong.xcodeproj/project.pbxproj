@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		062AA67C24483A3F005A2EBF /* DrinkPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */; };
 		062AA68324485DF7005A2EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062AA68224485DF7005A2EBF /* Main.storyboard */; };
+		062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA68424487882005A2EBF /* WaterPopoverViewController.swift */; };
 		5200A91F243C611800E1602F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A91E243C611800E1602F /* LoginViewController.swift */; };
 		5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A920243C612D00E1602F /* RegisterViewController.swift */; };
 		52FD9319242DDA7A00287167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD9318242DDA7A00287167 /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPopoverViewController.swift; sourceTree = "<group>"; };
 		062AA68224485DF7005A2EBF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		062AA68424487882005A2EBF /* WaterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterPopoverViewController.swift; sourceTree = "<group>"; };
 		5200A91E243C611800E1602F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5200A920243C612D00E1602F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		52FD9315242DDA7A00287167 /* GanKong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanKong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 				5200A91E243C611800E1602F /* LoginViewController.swift */,
 				5200A920243C612D00E1602F /* RegisterViewController.swift */,
 				062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */,
+				062AA68424487882005A2EBF /* WaterPopoverViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				52FD9319242DDA7A00287167 /* AppDelegate.swift in Sources */,
 				52FD933D242DDDE200287167 /* HealthKitAuthorization.swift in Sources */,
 				52FD9335242DDC7200287167 /* EvaluationDetailViewController.swift in Sources */,
+				062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */,
 				52FD933B242DDD8A00287167 /* User.swift in Sources */,
 				52FD9341242DDE5700287167 /* NetworkController.swift in Sources */,
 				52FD9337242DDCC200287167 /* UserTableViewController.swift in Sources */,
