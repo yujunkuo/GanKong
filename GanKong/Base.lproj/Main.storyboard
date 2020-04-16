@@ -26,6 +26,11 @@
                                     <action selector="AuthorizationButtonAction:" destination="pDW-qz-a3O" eventType="touchUpInside" id="a5z-z1-uRw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVv-Cc-yOl">
+                                <rect key="frame" x="335" y="140" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Drink"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -39,6 +44,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sz-rN-vqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-926.08695652173924" y="-1041.2946428571429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FDf-wR-LrS">
+            <objects>
+                <viewController id="Oj0-0X-pwh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IUF-Fo-IPz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7fD-gn-P4h"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dmv-js-Cah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-49" y="-1051"/>
         </scene>
         <!--ReportTableViewController-->
         <scene sceneID="Raq-Yy-kFG">
