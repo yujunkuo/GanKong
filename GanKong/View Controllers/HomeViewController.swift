@@ -16,6 +16,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
     var user = User( )
     
     let locationManager = CLLocationManager( )
+    
+    let networkController = NetworkController( )
+    
 
     @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
         authorizeHealthKit( )
@@ -49,18 +52,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         user.session_id = self.session_id
         
         // 1. 還沒有詢問過用戶以獲得權限
-        if CLLocationManager.authorizationStatus() == .notDetermined {
+        if CLLocationManager.authorizationStatus( ) == .notDetermined {
             locationManager.requestWhenInUseAuthorization( )
         }
         // 2. 用戶不同意
-        else if CLLocationManager.authorizationStatus() == .denied {
+        else if CLLocationManager.authorizationStatus( ) == .denied {
             let controller = UIAlertController(title: "地點存取權限", message: "我們需要知道您的位置，以提供天氣等資訊...", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             controller.addAction(okAction)
             present(controller, animated: true, completion: nil)
         }
         // 3. 用戶已經同意
-        else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+        else if CLLocationManager.authorizationStatus( ) == .authorizedWhenInUse {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation( )
@@ -82,8 +85,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         }
     }
     
-    func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
-        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+    func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ( )) {
+        CLGeocoder( ).reverseGeocodeLocation(location) { placemarks, error in
             completion(placemarks?.first?.locality,
                        placemarks?.first?.country,
                        error)
