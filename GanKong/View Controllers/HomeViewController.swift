@@ -106,8 +106,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
                 }
               else {
                 DispatchQueue.main.async {
-                    self.weatherMain.text = "Current Weather: \(String(describing: UserDefaults.standard.value(forKey: "weather_main")))"
-                    self.weatherDescription.text = "Description: \(String(describing: UserDefaults.standard.value(forKey: "weather_description")))"
+                    self.weatherMain.text = "Current Weather: \( UserDefaults.standard.value(forKey: "weather_main")!)"
+                    self.weatherDescription.text = "Description: \( UserDefaults.standard.value(forKey: "weather_description")!)"
                     }
                 print("last update time: \(weather_update_time)")
             }

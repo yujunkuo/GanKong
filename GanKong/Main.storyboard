@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="width" constant="301" id="ICj-Vs-6VO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btB-Nm-DfZ">
@@ -77,7 +77,7 @@
                                     <constraint firstAttribute="height" constant="72" id="jm1-vh-Gpj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTm-PY-cd4">
@@ -87,7 +87,7 @@
                                     <constraint firstAttribute="width" constant="231" id="soo-6W-ZxF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                         </subviews>

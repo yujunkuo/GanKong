@@ -12,11 +12,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     let fullScreenSize = UIScreen.main.bounds.size
     
+    // 茶每 700 毫升 100 大卡，奶類 700 毫升 390 大卡，果汁 100 毫升 50 大卡
+    // 咖啡 100 毫升 4.2 大卡
     let drinks = ["🍵(單茶)", "🥤(奶茶)", "☕️(咖啡)", "🍹(果汁)"]
     let drink_dict:Dictionary = ["🍵(單茶)" : "單茶", "🥤(奶茶)" : "奶茶",
                                  "☕️(咖啡)" : "咖啡", "🍹(果汁)" : "果汁"]
-    let drink_volumne = ["小杯(500 c.c)", "大杯(700 c.c.)"]
-    let volumne_dict:Dictionary = ["小杯(500 c.c)":500, "大杯(700 c.c.)":700]
+    let drink_volumne = ["咖啡小杯(240 c.c.)", "咖啡中杯(360 c.c.)", "咖啡大杯(480 c.c.)",  "小杯(500 c.c)", "大杯(700 c.c.)"]
+    let volumne_dict:Dictionary = ["咖啡小杯(240 c.c.)":240, "咖啡中杯(360 c.c.)":360, "咖啡大杯(480 c.c.)":480, "小杯(500 c.c)":500, "大杯(700 c.c.)":700]
     
     func hideKeyboard(tapG:UITapGestureRecognizer){
         self.view.endEditing(true)

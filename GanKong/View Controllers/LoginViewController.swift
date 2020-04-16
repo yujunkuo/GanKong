@@ -74,7 +74,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             session_id = UserDefaults.standard.value(forKey: "session_id") as! String
             self.networkController.checkLogin(session_id: session_id) {
                 (status_code) in
-                print(status_code!)
+                if (status_code != nil) {
+                    print(status_code!)
+                }
                 if status_code == 200 {
                     DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
