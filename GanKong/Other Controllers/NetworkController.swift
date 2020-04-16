@@ -216,5 +216,23 @@ class NetworkController {
         }
         task.resume( )
     }
+    
+    func getWeatherData (lat: Double, lon: Double, completion: @escaping ([Dictionary<String, Any>]?) -> Void){
+        let weatherURL = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=e0e24c33f68f469d16c6cf7b937f47bb")!
+        let task = URLSession.shared.dataTask(with: weatherURL)
+            { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String:Any],
+                    let weatherData = jsonDictionary["weather"] as?
+                        [Dictionary<String, Any>] {
+                    completion(weatherData)
+                 } else {
+                    completion(nil)
+                 }
+        }
+        task.resume( )
+    }
 }
 
