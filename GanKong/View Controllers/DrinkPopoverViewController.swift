@@ -10,6 +10,8 @@ import UIKit
 
 class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var user = User( )
+    
     let helper = HelperController()
     let networkController = NetworkController( )
     
@@ -19,8 +21,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     let drinks = ["🍵(單茶)", "🥤(奶茶)", "☕️(咖啡)", "🍹(果汁)"]
     let drink_dict:Dictionary = ["🍵(單茶)" : "單茶", "🥤(奶茶)" : "奶茶",
                                  "☕️(咖啡)" : "咖啡", "🍹(果汁)" : "果汁"]
-    let drink_volumne = ["咖啡小杯(240 c.c.)", "咖啡中杯(360 c.c.)", "咖啡大杯(480 c.c.)",  "小杯(500 c.c)", "大杯(700 c.c.)"]
-    let volumne_dict:Dictionary = ["咖啡小杯(240 c.c.)":240.0, "咖啡中杯(360 c.c.)":360.0, "咖啡大杯(480 c.c.)":480.0, "小杯(500 c.c)":500.0, "大杯(700 c.c.)":700.0]
+    let drink_volume = ["咖啡小杯(240 c.c.)", "咖啡中杯(360 c.c.)", "咖啡大杯(480 c.c.)",  "小杯(500 c.c)", "大杯(700 c.c.)"]
+    let volume_dict:Dictionary = ["咖啡小杯(240 c.c.)":240.0, "咖啡中杯(360 c.c.)":360.0, "咖啡大杯(480 c.c.)":480.0, "小杯(500 c.c)":500.0, "大杯(700 c.c.)":700.0]
     // 茶每 700 毫升 100 大卡，奶類 700 毫升 390 大卡，果汁 100 毫升 50 大卡
     // 咖啡 100 毫升 4.2 大卡
     let calories_dict:Dictionary = ["單茶":0.142857, "奶茶":0.557142, "咖啡":0.042, "果汁":0.05]
@@ -36,13 +38,14 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet var coffeeButton: UIButton!
     @IBOutlet var juiceButton: UIButton!
     
-    let volumnePickerView = UIPickerView()
-    @IBOutlet var volumneSelectField: UITextField!
+    let volumePickerView = UIPickerView()
+    @IBOutlet var volumeSelectField: UITextField!
     let datePickerView = UIDatePicker()
     @IBOutlet var dateField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         
 //        drinkPickerView.delegate = self
 //        drinkPickerView.dataSource = self
@@ -56,12 +59,12 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         coffeeButton.backgroundColor = UIColor.blue
         juiceButton.backgroundColor = UIColor.blue
         
-        volumnePickerView.delegate = self
-        volumnePickerView.dataSource = self
+        volumePickerView.delegate = self
+        volumePickerView.dataSource = self
         
-        volumneSelectField.inputView = volumnePickerView
-        volumneSelectField.placeholder = "Select Volumne"
-        volumneSelectField.textAlignment = .center
+        volumeSelectField.inputView = volumePickerView
+        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.textAlignment = .center
         
         datePickerView.datePickerMode = .date
         datePickerView.date = Date()
@@ -79,7 +82,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         dateField.textAlignment = .center
         
 //        self.view.addSubview(drinkSelectField)
-        self.view.addSubview(volumneSelectField)
+        self.view.addSubview(volumeSelectField)
         self.view.addSubview(dateField)
     }
     
@@ -94,8 +97,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
 //        }
 //
 //        // 否則就是設置第二列
-//        // 返回陣列 drink_volumne 的成員數量
-        return drink_volumne.count
+//        // 返回陣列 drink_volume 的成員數量
+        return drink_volume.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -105,8 +108,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
 //        }
 //
 //        // 否則就是設置第二列
-//        // 設置為陣列 drink_volumne 的第 row 項資料
-        return drink_volumne[row]
+//        // 設置為陣列 drink_volume 的第 row 項資料
+        return drink_volume[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -114,8 +117,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
 //            drinkSelectField.text = drinks[row]
 //            drinkSelectField.resignFirstResponder()
 //        }else{
-            volumneSelectField.text = drink_volumne[row]
-            volumneSelectField.resignFirstResponder()
+            volumeSelectField.text = drink_volume[row]
+            volumeSelectField.resignFirstResponder()
 //        }
     }
     
@@ -158,24 +161,24 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func doneButtonPressed(_ sender: Any){
         if(typeChoose != [0,0,0,0] &&
 //            drinkSelectField.text != "" &&
-                volumneSelectField.text != "" && dateField.text != ""){
+                volumeSelectField.text != "" && dateField.text != ""){
 //            let drinkType = drink_dict[String(drinkSelectField.text!)]!
             let index = typeChoose.firstIndex(of: 1)
             let drinkType = drink_dict[drinks[index!]]
-            let volumne = volumne_dict[String(volumneSelectField.text!)]!
-            let calories:Double = calories_dict[drinkType!]! * volumne
+            let volume = volume_dict[String(volumeSelectField.text!)]!
+            let calories:Double = calories_dict[drinkType!]! * volume
             print(dateField.text!)
-            print(drinkType, volumne)
+            print(drinkType!, volume)
             print("共攝取" + String(ceil(calories)) + "大卡")
             
             let drinkDatetimeStamp = helper.string2TimeStamp(dateField.text!)
             
-//            self.networkController.postStepCountData(drinkType: drinkType, volumne: volumne, calories: calories, time: drinkDatetimeStamp, session_id: self.user.session_id!) {
-//                (status_code) in
-//                    if (status_code != nil) {
-//                        print(status_code!)
-//                    }
-//            }
+            self.networkController.postDrinkData(drinkType: drinkType!, volume: volume, calories: calories, time: String(drinkDatetimeStamp), session_id: self.user.session_id!) {
+                (status_code) in
+                    if (status_code != nil) {
+                        print(status_code!)
+                    }
+            }
             
             self.dismiss(animated: true, completion: nil)
         }

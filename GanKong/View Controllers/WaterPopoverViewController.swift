@@ -10,16 +10,18 @@ import UIKit
 
 class WaterPopoverViewController: UIViewController {
     
-    let helper = HelperController()
+    var user = User( )
+    let helper = HelperController( )
     let networkController = NetworkController( )
     
     @IBOutlet var waterLabel: UILabel!
     let datePickerView = UIDatePicker()
     @IBOutlet var dateField: UITextField!
-    var volumne = 0
+    var glass = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         updateWater()
         
         datePickerView.datePickerMode = .date
@@ -47,18 +49,18 @@ class WaterPopoverViewController: UIViewController {
     }
     
     private func updateLabels() {
-        var numOfGlass = String(volumne) + " 杯"
+        var numOfGlass = String(glass) + " 杯"
         waterLabel.text = numOfGlass
     }
     
     @IBAction func plusButtonPressed(_ sender: Any){
-        volumne += 1
+        glass += 1
         updateLabels()
     }
     
     @IBAction func minusButtonPressed(_ sender: Any){
-        if (volumne != 0){
-            volumne -= 1
+        if (glass != 0){
+            glass -= 1
             updateLabels()
         }
         
@@ -69,19 +71,19 @@ class WaterPopoverViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any){
-        if(volumne != 0 && dateField.text != ""){
+        if(glass != 0 && dateField.text != ""){
             print(dateField.text!)
-            let total = volumne * 300
-            print("喝水" + String(total) + "c.c.")
+            let volume = glass * 300
+            print("喝水" + String(volume) + "c.c.")
             
             let drinkDatetimeStamp = helper.string2TimeStamp(dateField.text!)
             
-//            self.networkController.postStepCountData(volumne: volumne, time: drinkDatetimeStamp, session_id: self.user.session_id!) {
-//                            (status_code) in
-//                                if (status_code != nil) {
-//                                    print(status_code!)
-//                                }
-//                        }
+            self.networkController.postWaterData(volume: volume, time: String(drinkDatetimeStamp), session_id: self.user.session_id!) {
+                            (status_code) in
+                                if (status_code != nil) {
+                                    print(status_code!)
+                                }
+                        }
             
             self.dismiss(animated: true, completion: nil)
         }
