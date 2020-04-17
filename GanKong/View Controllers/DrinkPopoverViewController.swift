@@ -10,6 +10,9 @@ import UIKit
 
 class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let helper = HelperController()
+    let networkController = NetworkController( )
+    
     let fullScreenSize = UIScreen.main.bounds.size
     
     let drinks = ["🍵(單茶)", "🥤(奶茶)", "☕️(咖啡)", "🍹(果汁)"]
@@ -29,6 +32,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet var drinkSelectField: UITextField!
     let volumnePickerView = UIPickerView()
     @IBOutlet var volumneSelectField: UITextField!
+    let datePickerView = UIDatePicker()
+    @IBOutlet var dateField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +52,24 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         volumneSelectField.placeholder = "Select Volumne"
         volumneSelectField.textAlignment = .center
         
+        datePickerView.datePickerMode = .date
+        datePickerView.date = Date()
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        datePickerView.locale = Locale(identifier: "zh_TW")
+        
+        datePickerView.addTarget(self, action: #selector(DrinkPopoverViewController.datePickerChanged), for: .valueChanged)
+        
+        dateField.inputView = datePickerView
+        dateField.placeholder = "Select Date"
+        dateField.textAlignment = .center
+        
         self.view.addSubview(drinkSelectField)
         self.view.addSubview(volumneSelectField)
+        self.view.addSubview(dateField)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -92,12 +113,22 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func doneButtonPressed(_ sender: Any){
-        if(drinkSelectField.text != "" && volumneSelectField.text != ""){
+        if(drinkSelectField.text != "" && volumneSelectField.text != "" && dateField.text != ""){
             let drinkType = drink_dict[String(drinkSelectField.text!)]!
             let volumne = volumne_dict[String(volumneSelectField.text!)]!
             let calories:Double = calories_dict[drinkType]! * volumne
+            print(dateField.text!)
             print(drinkType, volumne)
             print("共攝取" + String(ceil(calories)) + "大卡")
+            
+            let drinkDatetimeStamp = helper.string2TimeStamp(dateField.text!)
+            
+//            self.networkController.postStepCountData(drinkType: drinkType, volumne: volumne, calories: calories, time: drinkDatetimeStamp, session_id: self.user.session_id!) {
+//                (status_code) in
+//                    if (status_code != nil) {
+//                        print(status_code!)
+//                    }
+//            }
             
             self.dismiss(animated: true, completion: nil)
         }
@@ -107,12 +138,27 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
             controller.addAction(okAction)
             present(controller, animated: true, completion: nil)
         }
+            else if(dateField.text == ""){
+                let controller = UIAlertController(title: "飲用日期為空值", message: "請輸入飲用日期", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                controller.addAction(okAction)
+                present(controller, animated: true, completion: nil)
+            }
         else{
             let controller = UIAlertController(title: "飲品容量為空值", message: "請輸入飲品容量", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             controller.addAction(okAction)
             present(controller, animated: true, completion: nil)
         }
+    }
+    
+    @objc func datePickerChanged(datePicker:UIDatePicker) {
+        // 設置要顯示在 UILabel 的日期時間格式
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        // 更新 UILabel 的內容
+        dateField.text = formatter.string(from: datePicker.date)
     }
     
     /*
