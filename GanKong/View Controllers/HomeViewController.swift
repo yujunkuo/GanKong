@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate{
+class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var session_id: String = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
     var user = User( )
@@ -146,6 +146,28 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
                        error)
         }
     }
+    
+    @IBAction func popFood(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController( )
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+            let image = pickedImage
+            guard let imgData = image.jpegData(compressionQuality: 0.2) else {
+                print("Could not get JPEG representation of UIImage")
+                return
+            }
+            
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     @IBAction func popDrink(_ sender: Any){
         let drinkPopVC = storyboard?.instantiateViewController(withIdentifier: "DrinkPopoverViewController") as! DrinkPopoverViewController
