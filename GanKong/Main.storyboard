@@ -208,6 +208,21 @@
             </objects>
             <point key="canvasLocation" x="160.86956521739131" y="-1833.4821428571427"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5XV-lU-r4G">
+            <objects>
+                <viewController id="38R-zc-Z9w" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e0r-oY-zPH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5UG-K2-OkT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAq-oJ-pPz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017.3913043478261" y="-2345.0892857142858"/>
+        </scene>
         <!--Drink Popover View Controller-->
         <scene sceneID="Kbs-Nq-gsR">
             <objects>
@@ -216,19 +231,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2u-A7-a9s">
-                                <rect key="frame" x="184" y="155" width="210" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="飲品類別" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUz-59-boM">
-                                <rect key="frame" x="20" y="155" width="125" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-VM-3Ec">
                                 <rect key="frame" x="20" y="410" width="125" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -271,13 +273,49 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjC-Qu-guR">
+                                <rect key="frame" x="20" y="121" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="🍵(單茶)"/>
+                                <connections>
+                                    <action selector="teaPressed:" destination="sab-vf-yWA" eventType="touchDown" id="uVH-T0-lWY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ets-gr-pdD">
+                                <rect key="frame" x="314" y="121" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="🍹(果汁)"/>
+                                <connections>
+                                    <action selector="juicePressed:" destination="sab-vf-yWA" eventType="touchDown" id="ddq-AO-zNm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY3-Qr-aut">
+                                <rect key="frame" x="118" y="121" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="🥤(奶茶)"/>
+                                <connections>
+                                    <action selector="milkPressed:" destination="sab-vf-yWA" eventType="touchDown" id="d00-fK-gAV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUL-cB-577">
+                                <rect key="frame" x="216" y="121" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="☕️(咖啡)"/>
+                                <connections>
+                                    <action selector="coffeePressed:" destination="sab-vf-yWA" eventType="touchDown" id="ZUz-Ui-HHt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95164602994918823" green="0.89494073390960693" blue="0.80196017026901245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="umc-66-s71"/>
                     </view>
                     <connections>
+                        <outlet property="coffeeButton" destination="WUL-cB-577" id="S2V-zX-RyW"/>
                         <outlet property="dateField" destination="7mb-E3-BFY" id="OAl-YX-TgU"/>
-                        <outlet property="drinkSelectField" destination="E2u-A7-a9s" id="JYL-fc-pp0"/>
+                        <outlet property="juiceButton" destination="ets-gr-pdD" id="cVb-En-6YX"/>
+                        <outlet property="milkButton" destination="xY3-Qr-aut" id="wcR-DR-YSb"/>
+                        <outlet property="teaButton" destination="bjC-Qu-guR" id="CdF-DF-g6v"/>
                         <outlet property="volumneSelectField" destination="otA-4z-6nZ" id="B2T-UF-1Rm"/>
                     </connections>
                 </viewController>

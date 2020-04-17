@@ -15,6 +15,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     let fullScreenSize = UIScreen.main.bounds.size
     
+    var typeChoose:[Int] = [0, 0, 0, 0]
     let drinks = ["🍵(單茶)", "🥤(奶茶)", "☕️(咖啡)", "🍹(果汁)"]
     let drink_dict:Dictionary = ["🍵(單茶)" : "單茶", "🥤(奶茶)" : "奶茶",
                                  "☕️(咖啡)" : "咖啡", "🍹(果汁)" : "果汁"]
@@ -28,8 +29,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.endEditing(true)
     }
     
-    let drinkPickerView = UIPickerView()
-    @IBOutlet var drinkSelectField: UITextField!
+//    let drinkPickerView = UIPickerView()
+//    @IBOutlet var drinkSelectField: UITextField!
+    @IBOutlet var teaButton: UIButton!
+    @IBOutlet var milkButton: UIButton!
+    @IBOutlet var coffeeButton: UIButton!
+    @IBOutlet var juiceButton: UIButton!
+    
     let volumnePickerView = UIPickerView()
     @IBOutlet var volumneSelectField: UITextField!
     let datePickerView = UIDatePicker()
@@ -38,12 +44,17 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drinkPickerView.delegate = self
-        drinkPickerView.dataSource = self
+//        drinkPickerView.delegate = self
+//        drinkPickerView.dataSource = self
+//
+//        drinkSelectField.inputView = drinkPickerView
+//        drinkSelectField.placeholder = "Select Drink"
+//        drinkSelectField.textAlignment = .center
         
-        drinkSelectField.inputView = drinkPickerView
-        drinkSelectField.placeholder = "Select Drink"
-        drinkSelectField.textAlignment = .center
+        teaButton.backgroundColor = UIColor.blue
+        milkButton.backgroundColor = UIColor.blue
+        coffeeButton.backgroundColor = UIColor.blue
+        juiceButton.backgroundColor = UIColor.blue
         
         volumnePickerView.delegate = self
         volumnePickerView.dataSource = self
@@ -67,56 +78,92 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         dateField.placeholder = "Select Date"
         dateField.textAlignment = .center
         
-        self.view.addSubview(drinkSelectField)
+//        self.view.addSubview(drinkSelectField)
         self.view.addSubview(volumneSelectField)
         self.view.addSubview(dateField)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            // 返回陣列 drinks 的成員數量
-            return drinks.count
-        }
-        
-        // 否則就是設置第二列
-        // 返回陣列 drink_volumne 的成員數量
+//        if component == 0 {
+//            // 返回陣列 drinks 的成員數量
+//            return drinks.count
+//        }
+//
+//        // 否則就是設置第二列
+//        // 返回陣列 drink_volumne 的成員數量
         return drink_volumne.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            // 設置為陣列 drinks 的第 row 項資料
-            return drinks[row]
-        }
-        
-        // 否則就是設置第二列
-        // 設置為陣列 drink_volumne 的第 row 項資料
+//        if component == 0 {
+//            // 設置為陣列 drinks 的第 row 項資料
+//            return drinks[row]
+//        }
+//
+//        // 否則就是設置第二列
+//        // 設置為陣列 drink_volumne 的第 row 項資料
         return drink_volumne[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 0 {
-            drinkSelectField.text = drinks[row]
-            drinkSelectField.resignFirstResponder()
-        }else{
+//        if component == 0 {
+//            drinkSelectField.text = drinks[row]
+//            drinkSelectField.resignFirstResponder()
+//        }else{
             volumneSelectField.text = drink_volumne[row]
             volumneSelectField.resignFirstResponder()
-        }
+//        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any){
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func teaPressed(_ sender: Any){
+        typeChoose = [1, 0, 0, 0]
+        teaButton.backgroundColor = UIColor.green
+        milkButton.backgroundColor = UIColor.blue
+        coffeeButton.backgroundColor = UIColor.blue
+        juiceButton.backgroundColor = UIColor.blue
+    }
+    
+    @IBAction func milkPressed(_ sender: Any){
+        typeChoose = [0, 1, 0, 0]
+        teaButton.backgroundColor = UIColor.blue
+        milkButton.backgroundColor = UIColor.green
+        coffeeButton.backgroundColor = UIColor.blue
+        juiceButton.backgroundColor = UIColor.blue
+    }
+    
+    @IBAction func coffeePressed(_ sender: Any){
+        typeChoose = [0, 0, 1, 0]
+        teaButton.backgroundColor = UIColor.blue
+        milkButton.backgroundColor = UIColor.blue
+        coffeeButton.backgroundColor = UIColor.green
+        juiceButton.backgroundColor = UIColor.blue
+    }
+    
+    @IBAction func juicePressed(_ sender: Any){
+        typeChoose = [0, 0, 0, 1]
+        teaButton.backgroundColor = UIColor.blue
+        milkButton.backgroundColor = UIColor.blue
+        coffeeButton.backgroundColor = UIColor.blue
+        juiceButton.backgroundColor = UIColor.green
+    }
+    
     @IBAction func doneButtonPressed(_ sender: Any){
-        if(drinkSelectField.text != "" && volumneSelectField.text != "" && dateField.text != ""){
-            let drinkType = drink_dict[String(drinkSelectField.text!)]!
+        if(typeChoose != [0,0,0,0] &&
+//            drinkSelectField.text != "" &&
+                volumneSelectField.text != "" && dateField.text != ""){
+//            let drinkType = drink_dict[String(drinkSelectField.text!)]!
+            let index = typeChoose.firstIndex(of: 1)
+            let drinkType = drink_dict[drinks[index!]]
             let volumne = volumne_dict[String(volumneSelectField.text!)]!
-            let calories:Double = calories_dict[drinkType]! * volumne
+            let calories:Double = calories_dict[drinkType!]! * volumne
             print(dateField.text!)
             print(drinkType, volumne)
             print("共攝取" + String(ceil(calories)) + "大卡")
@@ -132,12 +179,18 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
             
             self.dismiss(animated: true, completion: nil)
         }
-        else if(drinkSelectField.text == ""){
-            let controller = UIAlertController(title: "飲品類別為空值", message: "請輸入飲品類別", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+        else if(typeChoose == [0,0,0,0]){
+                        let controller = UIAlertController(title: "飲品類別為空值", message: "請輸入飲品類別", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        controller.addAction(okAction)
+                        present(controller, animated: true, completion: nil)
         }
+//        else if(drinkSelectField.text == ""){
+//            let controller = UIAlertController(title: "飲品類別為空值", message: "請輸入飲品類別", preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            controller.addAction(okAction)
+//            present(controller, animated: true, completion: nil)
+//        }
             else if(dateField.text == ""){
                 let controller = UIAlertController(title: "飲用日期為空值", message: "請輸入飲用日期", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
