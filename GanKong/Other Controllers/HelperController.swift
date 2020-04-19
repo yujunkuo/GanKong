@@ -9,6 +9,7 @@
 import Foundation
 
 class HelperController{
+    
     public func string2TimeStamp(_ string:String, dateFormat:String = "yyyy-MM-dd") -> TimeInterval {
         let formatter = DateFormatter()
         formatter.locale = Locale.init(identifier: "zh_TW")
@@ -17,4 +18,5 @@ class HelperController{
         let timeStamp: TimeInterval = date!.timeIntervalSince1970
         return timeStamp
     }
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkController {
     
@@ -286,6 +287,49 @@ class NetworkController {
     }
     
     
+    func postFoodData(base64String: String) {
+        
+            let boundary = "Boundary-\(UUID().uuidString)"
+            let foodURL = self.baseURL.appendingPathComponent("food")
+            var request = URLRequest(url: foodURL)
+            request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+
+            var body = ""
+            body += "--\(boundary)\r\n"
+            body += "Content-Disposition:form-data; name=\"image\""
+            body += "\r\n\r\n\(base64String)\r\n"
+            body += "--\(boundary)--\r\n"
+            let postData = body.data(using: .utf8)
+
+            request.httpBody = postData
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("failed with error: \(error)")
+                    return
+                }
+                guard let response = response as? HTTPURLResponse,
+                    (200...299).contains(response.statusCode) else {
+                    print("server error")
+                    return
+                }
+                if let mimeType = response.mimeType, mimeType == "application/json", let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("imgur upload results: \(dataString)")
+
+                    let parsedResult: [String: AnyObject]
+                    do {
+                        parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: AnyObject]
+                        if let dataJson = parsedResult["data"] as? [String: Any] {
+                            print("Link is : \(dataJson["link"] as? String ?? "Link not found")")
+                        }
+                    } catch {
+                        // Display an error
+                    }
+                }
+            }.resume( )
+        }
+
     
 }
 

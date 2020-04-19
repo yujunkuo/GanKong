@@ -154,20 +154,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         present(imagePicker, animated: true, completion: nil)
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             let image = pickedImage
-            guard let imgData = image.jpegData(compressionQuality: 0.2) else {
-                print("Could not get JPEG representation of UIImage")
+            guard let base64String = image.jpegData(compressionQuality: 0.2)?.base64EncodedString( ) else {
+                print("Could not get JPEG or base64 representation of UIImage")
                 return
             }
-            
+            networkController.postFoodData(base64String: base64String)
         }
-        dismiss(animated: true, completion: nil)
+        
+        picker.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
+
     
     @IBAction func popDrink(_ sender: Any){
         let drinkPopVC = storyboard?.instantiateViewController(withIdentifier: "DrinkPopoverViewController") as! DrinkPopoverViewController
@@ -182,6 +182,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         self.present(navController, animated: true, completion: nil)
     }
     
+    
     @IBAction func popWater(_ sender: Any){
         let waterPopVC = storyboard?.instantiateViewController(withIdentifier: "WaterPopoverViewController") as! WaterPopoverViewController
         waterPopVC.preferredContentSize = CGSize(width: 10, height: 10)
@@ -194,6 +195,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         
         self.present(navController, animated: true, completion: nil)
     }
+    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
         return .none
