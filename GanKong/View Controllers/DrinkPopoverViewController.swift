@@ -21,7 +21,8 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     let drinks = ["🍵(單茶)", "🥤(奶茶)", "☕️(咖啡)", "🍹(果汁)"]
     let drink_dict:Dictionary = ["🍵(單茶)" : "單茶", "🥤(奶茶)" : "奶茶",
                                  "☕️(咖啡)" : "咖啡", "🍹(果汁)" : "果汁"]
-    let drink_volume = ["咖啡小杯(240 c.c.)", "咖啡中杯(360 c.c.)", "咖啡大杯(480 c.c.)",  "小杯(500 c.c)", "大杯(700 c.c.)"]
+    let drink_volume = ["小杯(500 c.c)", "大杯(700 c.c.)"]
+    let coffee_volume = ["咖啡小杯(240 c.c.)", "咖啡中杯(360 c.c.)", "咖啡大杯(480 c.c.)"]
     let volume_dict:Dictionary = ["咖啡小杯(240 c.c.)":240.0, "咖啡中杯(360 c.c.)":360.0, "咖啡大杯(480 c.c.)":480.0, "小杯(500 c.c)":500.0, "大杯(700 c.c.)":700.0]
     // 茶每 700 毫升 100 大卡，奶類 700 毫升 390 大卡，果汁 100 毫升 50 大卡
     // 咖啡 100 毫升 4.2 大卡
@@ -63,7 +64,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         volumePickerView.dataSource = self
         
         volumeSelectField.inputView = volumePickerView
-        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.placeholder = "Please choose drink type first"
         volumeSelectField.textAlignment = .center
         
         datePickerView.datePickerMode = .date
@@ -91,35 +92,41 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        if component == 0 {
-//            // 返回陣列 drinks 的成員數量
-//            return drinks.count
-//        }
-//
-//        // 否則就是設置第二列
-//        // 返回陣列 drink_volume 的成員數量
-        return drink_volume.count
+        if typeChoose == [0, 0, 1, 0]{
+            return coffee_volume.count
+        }
+        else if typeChoose == [0, 0, 0, 0]{
+            return 0
+        }
+        else{
+            return drink_volume.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        if component == 0 {
-//            // 設置為陣列 drinks 的第 row 項資料
-//            return drinks[row]
-//        }
-//
-//        // 否則就是設置第二列
-//        // 設置為陣列 drink_volume 的第 row 項資料
-        return drink_volume[row]
+        if typeChoose == [0, 0, 1, 0]{
+            return coffee_volume[row]
+        }
+        else if typeChoose == [0, 0, 0, 0]{
+            return nil
+        }
+        else{
+            return drink_volume[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if component == 0 {
-//            drinkSelectField.text = drinks[row]
-//            drinkSelectField.resignFirstResponder()
-//        }else{
+        if typeChoose == [0, 0, 1, 0]{
+            volumeSelectField.text = coffee_volume[row]
+            volumeSelectField.resignFirstResponder()
+        }
+        else if typeChoose == [0, 0, 0, 0]{
+        }
+        else{
             volumeSelectField.text = drink_volume[row]
             volumeSelectField.resignFirstResponder()
-//        }
+        }
+
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any){
@@ -132,6 +139,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         milkButton.backgroundColor = UIColor.blue
         coffeeButton.backgroundColor = UIColor.blue
         juiceButton.backgroundColor = UIColor.blue
+        volumeSelectField.text = ""
+        volumePickerView.delegate = self
+        volumePickerView.dataSource = self
+        
+        volumeSelectField.inputView = volumePickerView
+        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.textAlignment = .center
     }
     
     @IBAction func milkPressed(_ sender: Any){
@@ -140,6 +154,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         milkButton.backgroundColor = UIColor.green
         coffeeButton.backgroundColor = UIColor.blue
         juiceButton.backgroundColor = UIColor.blue
+        volumeSelectField.text = ""
+        volumePickerView.delegate = self
+        volumePickerView.dataSource = self
+        
+        volumeSelectField.inputView = volumePickerView
+        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.textAlignment = .center
     }
     
     @IBAction func coffeePressed(_ sender: Any){
@@ -148,6 +169,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         milkButton.backgroundColor = UIColor.blue
         coffeeButton.backgroundColor = UIColor.green
         juiceButton.backgroundColor = UIColor.blue
+        volumeSelectField.text = ""
+        volumePickerView.delegate = self
+        volumePickerView.dataSource = self
+        
+        volumeSelectField.inputView = volumePickerView
+        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.textAlignment = .center
     }
     
     @IBAction func juicePressed(_ sender: Any){
@@ -156,6 +184,13 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         milkButton.backgroundColor = UIColor.blue
         coffeeButton.backgroundColor = UIColor.blue
         juiceButton.backgroundColor = UIColor.green
+        volumeSelectField.text = ""
+        volumePickerView.delegate = self
+        volumePickerView.dataSource = self
+        
+        volumeSelectField.inputView = volumePickerView
+        volumeSelectField.placeholder = "Select Volume"
+        volumeSelectField.textAlignment = .center
     }
     
     @IBAction func doneButtonPressed(_ sender: Any){
