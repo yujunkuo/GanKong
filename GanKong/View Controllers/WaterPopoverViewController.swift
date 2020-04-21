@@ -49,7 +49,7 @@ class WaterPopoverViewController: UIViewController {
     }
     
     private func updateLabels() {
-        var numOfGlass = String(glass) + " 杯"
+        let numOfGlass = String(glass) + " 杯"
         waterLabel.text = numOfGlass
     }
     

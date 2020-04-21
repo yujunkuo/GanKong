@@ -32,8 +32,6 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.endEditing(true)
     }
     
-//    let drinkPickerView = UIPickerView()
-//    @IBOutlet var drinkSelectField: UITextField!
     @IBOutlet var teaButton: UIButton!
     @IBOutlet var milkButton: UIButton!
     @IBOutlet var coffeeButton: UIButton!
@@ -47,13 +45,6 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
-        
-//        drinkPickerView.delegate = self
-//        drinkPickerView.dataSource = self
-//
-//        drinkSelectField.inputView = drinkPickerView
-//        drinkSelectField.placeholder = "Select Drink"
-//        drinkSelectField.textAlignment = .center
         
         teaButton.backgroundColor = UIColor.blue
         milkButton.backgroundColor = UIColor.blue
@@ -82,7 +73,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         dateField.placeholder = "Select Date"
         dateField.textAlignment = .center
         
-//        self.view.addSubview(drinkSelectField)
+        //        self.view.addSubview(drinkSelectField)
         self.view.addSubview(volumeSelectField)
         self.view.addSubview(dateField)
     }
@@ -126,7 +117,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
             volumeSelectField.text = drink_volume[row]
             volumeSelectField.resignFirstResponder()
         }
-
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any){
@@ -194,10 +185,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func doneButtonPressed(_ sender: Any){
-        if(typeChoose != [0,0,0,0] &&
-//            drinkSelectField.text != "" &&
-                volumeSelectField.text != "" && dateField.text != ""){
-//            let drinkType = drink_dict[String(drinkSelectField.text!)]!
+        if(typeChoose != [0,0,0,0] && volumeSelectField.text != "" && dateField.text != ""){
             let index = typeChoose.firstIndex(of: 1)
             let drinkType = drink_dict[drinks[index!]]
             let volume = volume_dict[String(volumeSelectField.text!)]!
@@ -210,31 +198,24 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
             
             self.networkController.postDrinkData(drinkType: drinkType!, volume: volume, calories: calories, time: String(drinkDatetimeStamp), session_id: self.user.session_id!) {
                 (status_code) in
-                    if (status_code != nil) {
-                        print(status_code!)
-                    }
+                if (status_code != nil) {
+                    print(status_code!)
+                }
             }
-            
             self.dismiss(animated: true, completion: nil)
         }
         else if(typeChoose == [0,0,0,0]){
-                        let controller = UIAlertController(title: "飲品類別為空值", message: "請輸入飲品類別", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        controller.addAction(okAction)
-                        present(controller, animated: true, completion: nil)
+            let controller = UIAlertController(title: "尚未選擇飲品類別", message: "請選擇飲品類別", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
         }
-//        else if(drinkSelectField.text == ""){
-//            let controller = UIAlertController(title: "飲品類別為空值", message: "請輸入飲品類別", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            controller.addAction(okAction)
-//            present(controller, animated: true, completion: nil)
-//        }
-            else if(dateField.text == ""){
-                let controller = UIAlertController(title: "飲用日期為空值", message: "請輸入飲用日期", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                controller.addAction(okAction)
-                present(controller, animated: true, completion: nil)
-            }
+        else if(dateField.text == ""){
+            let controller = UIAlertController(title: "飲用日期為空值", message: "請輸入飲用日期", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
         else{
             let controller = UIAlertController(title: "飲品容量為空值", message: "請輸入飲品容量", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
