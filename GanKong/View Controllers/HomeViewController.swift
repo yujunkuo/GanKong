@@ -27,6 +27,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
     @IBOutlet var currentLocation: UILabel!
     @IBOutlet var weatherMain: UILabel!
     @IBOutlet var weatherDescription: UILabel!
+    @IBOutlet var waterButton: UIButton!
+    @IBOutlet var drinkButton: UIButton!
     
 
     private func authorizeHealthKit( ) {
@@ -73,6 +75,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation( )
         }
+        
+        waterButton.isHidden = true
+        drinkButton.isHidden = true
         
 
         // Do any additional setup after loading the view.
@@ -167,6 +172,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    var count = 0
+    @IBAction func popAquaBt(_ sender: Any){
+        if count == 0{
+            waterButton.isHidden = false
+            drinkButton.isHidden = false
+            count = 1
+        }
+        else{
+            waterButton.isHidden = true
+            drinkButton.isHidden = true
+            count = 0
+        }
+    }
+    
 
     
     @IBAction func popDrink(_ sender: Any){
@@ -200,7 +220,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
         return .none
     }
-    
     /*
     // MARK: - Navigation
 

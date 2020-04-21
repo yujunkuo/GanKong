@@ -42,28 +42,13 @@
                                     <action selector="AuthorizationButtonAction:" destination="pDW-qz-a3O" eventType="touchUpInside" id="a5z-z1-uRw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-Pk-oxO">
-                                <rect key="frame" x="329" y="159" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1Jz-G8-4hy"/>
-                                    <constraint firstAttribute="width" constant="50" id="DhO-vi-47e"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-Pk-oxO">
+                                <rect key="frame" x="277" y="138" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="💧"/>
+                                <state key="normal" title="💦"/>
                                 <connections>
                                     <action selector="popWater:" destination="pDW-qz-a3O" eventType="touchDown" id="xFH-Hw-Vbl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVv-Cc-yOl">
-                                <rect key="frame" x="329" y="241" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="06x-MA-pxg"/>
-                                    <constraint firstAttribute="width" constant="50" id="lk4-pG-jhs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="🥤"/>
-                                <connections>
-                                    <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXa-iB-1s0">
@@ -108,6 +93,24 @@
                                     <action selector="popFood:" destination="pDW-qz-a3O" eventType="touchUpInside" id="hdg-l6-kDB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-jj-G8O">
+                                <rect key="frame" x="329" y="167" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="💧"/>
+                                <connections>
+                                    <action selector="popAquaBt:" destination="pDW-qz-a3O" eventType="touchDown" id="jYF-sd-mwl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVv-Cc-yOl">
+                                <rect key="frame" x="277" y="196" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="🥤"/>
+                                <connections>
+                                    <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -115,13 +118,9 @@
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="CyM-wH-tU3"/>
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-95" id="ERx-3J-QMa"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="-35.5" id="Gha-ca-KDD"/>
-                            <constraint firstItem="vjS-Pk-oxO" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-264" id="Hf9-rw-MP7"/>
                             <constraint firstItem="nDO-CQ-34t" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="300" id="IUc-aD-Tk6"/>
-                            <constraint firstItem="GVv-Cc-yOl" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="147" id="Khm-k4-raF"/>
-                            <constraint firstItem="vjS-Pk-oxO" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="147" id="Oi7-i0-8Ei"/>
                             <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="8" id="WdQ-eP-XkU"/>
                             <constraint firstItem="nDO-CQ-34t" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="fiE-BG-ykg"/>
-                            <constraint firstItem="GVv-Cc-yOl" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-182" id="gxk-4K-QwK"/>
                             <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="hYA-M4-Nfv"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-193" id="umh-bh-Xou"/>
                             <constraint firstItem="F9s-kf-NI2" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="88" id="wT9-Gv-sHM"/>
@@ -131,6 +130,8 @@
                     <navigationItem key="navigationItem" title="Home" id="wDi-cw-Ilz"/>
                     <connections>
                         <outlet property="currentLocation" destination="kTm-PY-cd4" id="VDD-4O-suf"/>
+                        <outlet property="drinkButton" destination="GVv-Cc-yOl" id="Q1d-E9-V3M"/>
+                        <outlet property="waterButton" destination="vjS-Pk-oxO" id="Czq-sN-elD"/>
                         <outlet property="weatherDescription" destination="btB-Nm-DfZ" id="Z7q-bm-HEw"/>
                         <outlet property="weatherMain" destination="SXa-iB-1s0" id="tXF-OS-60R"/>
                     </connections>
