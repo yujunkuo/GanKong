@@ -7,6 +7,151 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Exercise Popover View Controller-->
+        <scene sceneID="fOo-fh-SYY">
+            <objects>
+                <viewController storyboardIdentifier="ExercisePopoverViewController" id="rad-mp-zZ2" customClass="ExercisePopoverViewController" customModule="GanKong" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="ExcercisePopoverViewController" id="7kg-DV-4lQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2v-Di-INA">
+                                <rect key="frame" x="20" y="126" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🏃🏿"/>
+                                <connections>
+                                    <action selector="joggingPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="rRS-Yq-ygu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIv-Cr-aEP">
+                                <rect key="frame" x="20" y="216" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🕺🏿"/>
+                                <connections>
+                                    <action selector="dancingPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="m1S-Nc-XdH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fI4-Ed-fq2">
+                                <rect key="frame" x="118" y="216" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🏋🏿"/>
+                                <connections>
+                                    <action selector="fitnessPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="cuI-Pu-wtI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-xS-uBm">
+                                <rect key="frame" x="216" y="216" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="⛹🏿"/>
+                                <connections>
+                                    <action selector="ballPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="8uo-RM-UFb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWW-69-1Wu">
+                                <rect key="frame" x="314" y="216" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🔞"/>
+                                <connections>
+                                    <action selector="above18Pressed:" destination="rad-mp-zZ2" eventType="touchDown" id="krk-wD-Xfm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-P6-IV9">
+                                <rect key="frame" x="118" y="126" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🏊🏿"/>
+                                <connections>
+                                    <action selector="swimmingPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="23q-4n-vms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcx-Us-gDV">
+                                <rect key="frame" x="216" y="126" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🚴🏿"/>
+                                <connections>
+                                    <action selector="cyclingPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="Gxn-xh-nus"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtO-94-Aby">
+                                <rect key="frame" x="314" y="126" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🧘🏿"/>
+                                <connections>
+                                    <action selector="yogaPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="pDd-Uo-bjx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2s-pt-cmq">
+                                <rect key="frame" x="20" y="475" width="125" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="UmQ-4L-Wti" eventType="touchDown" id="BuY-rf-Daa"/>
+                                    <action selector="cancelButtonPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="Xx8-sY-QvX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWG-3r-iCF">
+                                <rect key="frame" x="269" y="475" width="125" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="UmQ-4L-Wti" eventType="touchDown" id="VIw-56-w9a"/>
+                                    <action selector="doneButtonPressed:" destination="rad-mp-zZ2" eventType="touchDown" id="nM7-j8-xfT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="開始時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oG-TE-Imx">
+                                <rect key="frame" x="20" y="339" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7H-yX-Ex0">
+                                <rect key="frame" x="164" y="334" width="210" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VyW-ff-OcQ">
+                                <rect key="frame" x="164" y="413" width="210" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="結束時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWh-kE-ZVe">
+                                <rect key="frame" x="20" y="420" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92548412084579468" green="0.91525477170944214" blue="0.63483041524887085" alpha="0.99957275390625" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="BRg-rO-uKH"/>
+                    </view>
+                    <connections>
+                        <outlet property="above18Button" destination="vWW-69-1Wu" id="EiB-Tw-yPx"/>
+                        <outlet property="ballButton" destination="JJG-xS-uBm" id="4kR-Yi-1P3"/>
+                        <outlet property="cyclingButton" destination="dcx-Us-gDV" id="zfq-i0-Hof"/>
+                        <outlet property="dancingButton" destination="lIv-Cr-aEP" id="5ea-nH-Ixh"/>
+                        <outlet property="endDateField" destination="VyW-ff-OcQ" id="gBs-2f-V3i"/>
+                        <outlet property="fitnessButton" destination="fI4-Ed-fq2" id="mOd-VG-Km4"/>
+                        <outlet property="joggingButton" destination="a2v-Di-INA" id="mgi-0X-UKV"/>
+                        <outlet property="startDateField" destination="e7H-yX-Ex0" id="I3J-n7-005"/>
+                        <outlet property="swimmingButton" destination="G3o-P6-IV9" id="5Yl-xj-j8e"/>
+                        <outlet property="yogaButton" destination="DtO-94-Aby" id="Q9d-yR-fvd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oo3-se-FW8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="-1833"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="J5R-eU-8Xx">
             <objects>
@@ -109,6 +254,15 @@
                                 <state key="normal" title="🥤"/>
                                 <connections>
                                     <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2F-ya-ayW">
+                                <rect key="frame" x="348" y="359" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🧑🏿‍🦼"/>
+                                <connections>
+                                    <action selector="popExcercise:" destination="pDW-qz-a3O" eventType="touchDown" id="BxO-q7-LPs"/>
                                 </connections>
                             </button>
                         </subviews>

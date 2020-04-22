@@ -26,7 +26,7 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     let volume_dict:Dictionary = ["咖啡小杯(240 c.c.)":240.0, "咖啡中杯(360 c.c.)":360.0, "咖啡大杯(480 c.c.)":480.0, "小杯(500 c.c)":500.0, "大杯(700 c.c.)":700.0]
     // 茶每 700 毫升 100 大卡，奶類 700 毫升 390 大卡，果汁 100 毫升 50 大卡
     // 咖啡 100 毫升 4.2 大卡
-    let calories_dict:Dictionary = ["單茶":0.142857, "奶茶":0.557142, "咖啡":0.042, "果汁":0.05]
+    let calories_dict:Dictionary = ["單茶":0.142857, "奶茶":0.557142, "咖啡":0.042, "果汁":0.5]
     
     func hideKeyboard(tapG:UITapGestureRecognizer){
         self.view.endEditing(true)
@@ -46,10 +46,10 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         
-        teaButton.backgroundColor = UIColor.blue
-        milkButton.backgroundColor = UIColor.blue
-        coffeeButton.backgroundColor = UIColor.blue
-        juiceButton.backgroundColor = UIColor.blue
+        teaButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        milkButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        coffeeButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        juiceButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
         
         volumePickerView.delegate = self
         volumePickerView.dataSource = self
@@ -126,10 +126,10 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func teaPressed(_ sender: Any){
         typeChoose = [1, 0, 0, 0]
-        teaButton.backgroundColor = UIColor.green
-        milkButton.backgroundColor = UIColor.blue
-        coffeeButton.backgroundColor = UIColor.blue
-        juiceButton.backgroundColor = UIColor.blue
+        teaButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0.5)
+        milkButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        coffeeButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        juiceButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
         volumeSelectField.text = ""
         volumePickerView.delegate = self
         volumePickerView.dataSource = self
@@ -141,10 +141,10 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func milkPressed(_ sender: Any){
         typeChoose = [0, 1, 0, 0]
-        teaButton.backgroundColor = UIColor.blue
-        milkButton.backgroundColor = UIColor.green
-        coffeeButton.backgroundColor = UIColor.blue
-        juiceButton.backgroundColor = UIColor.blue
+        teaButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        milkButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0.5)
+        coffeeButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        juiceButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
         volumeSelectField.text = ""
         volumePickerView.delegate = self
         volumePickerView.dataSource = self
@@ -156,10 +156,10 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func coffeePressed(_ sender: Any){
         typeChoose = [0, 0, 1, 0]
-        teaButton.backgroundColor = UIColor.blue
-        milkButton.backgroundColor = UIColor.blue
-        coffeeButton.backgroundColor = UIColor.green
-        juiceButton.backgroundColor = UIColor.blue
+        teaButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        milkButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        coffeeButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0.5)
+        juiceButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
         volumeSelectField.text = ""
         volumePickerView.delegate = self
         volumePickerView.dataSource = self
@@ -171,10 +171,10 @@ class DrinkPopoverViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func juicePressed(_ sender: Any){
         typeChoose = [0, 0, 0, 1]
-        teaButton.backgroundColor = UIColor.blue
-        milkButton.backgroundColor = UIColor.blue
-        coffeeButton.backgroundColor = UIColor.blue
-        juiceButton.backgroundColor = UIColor.green
+        teaButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        milkButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        coffeeButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
+        juiceButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0.5)
         volumeSelectField.text = ""
         volumePickerView.delegate = self
         volumePickerView.dataSource = self

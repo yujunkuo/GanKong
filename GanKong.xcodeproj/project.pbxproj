@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0613D7B9245010C800B5EB36 /* ExercisePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613D7B8245010C800B5EB36 /* ExercisePopoverViewController.swift */; };
 		062AA67C24483A3F005A2EBF /* DrinkPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */; };
 		062AA68324485DF7005A2EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062AA68224485DF7005A2EBF /* Main.storyboard */; };
 		062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA68424487882005A2EBF /* WaterPopoverViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0613D7B8245010C800B5EB36 /* ExercisePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePopoverViewController.swift; sourceTree = "<group>"; };
 		062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPopoverViewController.swift; sourceTree = "<group>"; };
 		062AA68224485DF7005A2EBF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		062AA68424487882005A2EBF /* WaterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterPopoverViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				5200A920243C612D00E1602F /* RegisterViewController.swift */,
 				062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */,
 				062AA68424487882005A2EBF /* WaterPopoverViewController.swift */,
+				0613D7B8245010C800B5EB36 /* ExercisePopoverViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */,
 				52FD933B242DDD8A00287167 /* User.swift in Sources */,
 				52FD9341242DDE5700287167 /* NetworkController.swift in Sources */,
+				0613D7B9245010C800B5EB36 /* ExercisePopoverViewController.swift in Sources */,
 				52FD9337242DDCC200287167 /* UserTableViewController.swift in Sources */,
 				5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */,
 				52FD931B242DDA7A00287167 /* SceneDelegate.swift in Sources */,

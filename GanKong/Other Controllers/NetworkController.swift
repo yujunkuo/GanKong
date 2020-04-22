@@ -329,6 +329,31 @@ class NetworkController {
                 }
             }.resume( )
         }
+    
+    func postExerciseData (exerciseType: String, calories: Double, startTime: String, endTime: String, session_id: String, completion: @escaping(Int?) -> Void) {
+        let exerciseURL = baseURL.appendingPathComponent("exercise")
+        var request = URLRequest(url: exerciseURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField:
+           "Content-Type")
+        let data: [String: String] = ["session_id": session_id, "exercise_Type": exerciseType,  "exercise_calories": String(calories), "exercise_start_time": startTime, "exercise_end_time":endTime]
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(data)
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request)
+        { (data, response, error) in
+                if let data = data,
+                    let jsonDictionary = try?
+                    JSONSerialization.jsonObject(with: data) as?
+                    [String: Int],
+                    let status_code = jsonDictionary["status_code"] {
+                            completion(status_code)
+                    } else {
+                        completion(nil)
+                    }
+        }
+        task.resume( )
+    }
 
     
 }

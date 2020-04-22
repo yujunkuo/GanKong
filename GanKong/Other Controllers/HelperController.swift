@@ -19,4 +19,13 @@ class HelperController{
         return timeStamp
     }
     
+    public func string2TimeStampForTime(_ string:String, dateFormat:String = "yyyy-MM-dd HH:mm:ss") -> TimeInterval {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "zh_TW")
+        formatter.dateFormat = dateFormat
+        let date = formatter.date(from: string)
+        let timeStamp: TimeInterval = date!.timeIntervalSince1970
+        return timeStamp
+    }
+    
 }
