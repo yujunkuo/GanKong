@@ -153,10 +153,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
     }
     
     @IBAction func popFood(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController( )
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+            let imagePicker = UIImagePickerController( )
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
     }
     
     
