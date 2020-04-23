@@ -11,9 +11,9 @@ import MapKit
 import CoreLocation
 import HealthKit
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate{
     
-    var session_id: String = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
+    var session_id: String = (UserDefaults.standard.value(forKey: "session_id") as? String)!
     var user = User( )
     var userTableVC = UserTableViewController( )
     
