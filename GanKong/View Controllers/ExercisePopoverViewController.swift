@@ -43,6 +43,11 @@ class ExercisePopoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            self.user = appDelegate.user
+        }
+        
         user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         
         joggingButton.backgroundColor = UIColor.init(red: 227/255, green: 168/255, blue: 105/255, alpha:0)
@@ -211,8 +216,7 @@ class ExercisePopoverViewController: UIViewController {
             let endDatetimeStamp = helper.string2TimeStampForTime(endDateField.text!)
             let duration = (endDatetimeStamp - startDatetimeStamp) / (60*60) //in hour
             let weight = user.weightInKilograms
-            print(weight)
-            let calories:Double = metsOfExercise! * duration
+            let calories:Double = metsOfExercise! * duration * weight!
             print(exerciseType)
             print("共消耗" + String(ceil(calories)) + "大卡")
             
