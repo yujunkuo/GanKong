@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EOw-iD-hQd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -254,10 +254,18 @@
                                     <action selector="popExcercise:" destination="pDW-qz-a3O" eventType="touchDown" id="BxO-q7-LPs"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="odh-vh-ne8">
+                                <rect key="frame" x="87" y="615" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="7Pv-QY-wGp"/>
+                                    <constraint firstAttribute="height" constant="128" id="UsX-6o-V5o"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="F9s-kf-NI2" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="147" id="3dP-yD-u2w"/>
+                            <constraint firstItem="odh-vh-ne8" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="231" id="48r-af-KBO"/>
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="CyM-wH-tU3"/>
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-95" id="ERx-3J-QMa"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="-35.5" id="Gha-ca-KDD"/>
@@ -265,6 +273,7 @@
                             <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="hYA-M4-Nfv"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-193" id="umh-bh-Xou"/>
                             <constraint firstItem="F9s-kf-NI2" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="88" id="wT9-Gv-sHM"/>
+                            <constraint firstItem="odh-vh-ne8" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="xXH-HF-MdD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JjG-hX-Dsa"/>
                     </view>
@@ -272,6 +281,7 @@
                     <connections>
                         <outlet property="currentLocation" destination="kTm-PY-cd4" id="VDD-4O-suf"/>
                         <outlet property="drinkButton" destination="GVv-Cc-yOl" id="Q1d-E9-V3M"/>
+                        <outlet property="mainGIFImageView" destination="odh-vh-ne8" id="Wls-tq-nM6"/>
                         <outlet property="waterButton" destination="vjS-Pk-oxO" id="Czq-sN-elD"/>
                         <outlet property="weatherDescription" destination="btB-Nm-DfZ" id="Z7q-bm-HEw"/>
                         <outlet property="weatherMain" destination="SXa-iB-1s0" id="tXF-OS-60R"/>
@@ -279,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sz-rN-vqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-926.08695652173924" y="-1041.2946428571429"/>
+            <point key="canvasLocation" x="-926" y="-1041"/>
         </scene>
         <!--Water Popover View Controller-->
         <scene sceneID="feT-rC-3V0">
@@ -498,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aG-rV-bTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="-1041.2946428571429"/>
+            <point key="canvasLocation" x="980" y="-1041"/>
         </scene>
         <!--ReportTableViewController-->
         <scene sceneID="Raq-Yy-kFG">
@@ -1190,12 +1200,44 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="pDW-qz-a3O" kind="relationship" relationship="rootViewController" id="56D-tT-AvE"/>
+                        <segue destination="pDW-qz-a3O" kind="relationship" relationship="rootViewController" id="uVE-FR-UoX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxR-1d-oqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1846" y="-1041"/>
+        </scene>
+        <!--Check Auth View Controller-->
+        <scene sceneID="pJF-lR-4Kb">
+            <objects>
+                <viewController id="YbE-Pf-9qI" customClass="CheckAuthViewController" customModule="GanKong" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eqb-6W-323">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請由設定進入，並授權此 App 讀取 Apple Health 的資料" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCs-VJ-4tG">
+                                <rect key="frame" x="20" y="408.5" width="374" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="Shv-LM-TyP"/>
+                                    <constraint firstAttribute="width" constant="374" id="ZYG-Rn-Crs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.63921568630000003" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CCs-VJ-4tG" firstAttribute="centerX" secondItem="eqb-6W-323" secondAttribute="centerX" id="VZf-l6-t7t"/>
+                            <constraint firstItem="CCs-VJ-4tG" firstAttribute="centerY" secondItem="eqb-6W-323" secondAttribute="centerY" id="uhF-aB-1Fg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KEE-Xs-zaj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JGi-uq-sMj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ErD-My-Qcv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3513" y="-605"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="5jT-Vv-2q2">
@@ -1273,6 +1315,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="EOw-iD-hQd" eventType="touchUpInside" id="UxR-2B-q7N"/>
+                                    <segue destination="YbE-Pf-9qI" kind="presentation" identifier="LoginNotAuthSegue" modalPresentationStyle="fullScreen" id="MDZ-ri-x5y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wba-jH-X80">
@@ -1410,6 +1453,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="haa-hr-zBt" eventType="touchUpInside" id="UoY-Zr-zmw"/>
+                                    <segue destination="YbE-Pf-9qI" kind="presentation" identifier="RegisterNotAuthSegue" modalPresentationStyle="fullScreen" id="Wck-Tv-pse"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊失敗！該帳號已存在！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfV-is-cTD">
@@ -1478,8 +1522,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kbn-ay-kag"/>
-        <segue reference="9En-B8-TMU"/>
+        <segue reference="DXT-bc-FJe"/>
+        <segue reference="Wck-Tv-pse"/>
+        <segue reference="uVE-FR-UoX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
