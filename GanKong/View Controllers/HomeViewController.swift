@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     @IBOutlet var foodButton: UIButton!
 
     private func authorizeHealthKit( ) {
-        HealthKitAuthorization.authorizeHealthKit { (authorized, error) in
+        HealthKitAuthorization.authorizeHealthKit { (authorized, error, check) in
         guard authorized else {
           let baseMessage = "HealthKit Authorization Failed"
           if let error = error {
