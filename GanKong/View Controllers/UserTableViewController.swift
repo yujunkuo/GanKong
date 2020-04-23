@@ -179,33 +179,33 @@ class UserTableViewController: UITableViewController {
     }
     
     private func loadAndDisplayMostRecentWeight() {
-    
-            guard let weightSampleType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
-                print("Body Mass Sample Type is no longer available in HealthKit")
+        
+        guard let weightSampleType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
+            print("Body Mass Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        UserController.getMostRecentSample(for: weightSampleType) { (sample, error) in
+            
+            if (sample != nil){
+                print("Got Weight")
+            }else{
+                print("Weight Not Found")
+            }
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    self.displayAlert(for: error)
+                }
                 return
             }
-    
-            UserController.getMostRecentSample(for: weightSampleType) { (sample, error) in
-    
-                if (sample != nil){
-                    print("Got Weight")
-                }else{
-                    print("Weight Not Found")
-                }
-    
-                guard let sample = sample else {
-    
-                    if let error = error {
-                        self.displayAlert(for: error)
-                    }
-                    return
-                }
-                let lastsample = sample.last as? HKQuantitySample
-                let weightInKilograms = lastsample!.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
-                self.user.weightInKilograms = weightInKilograms
-                self.updateLabels()
-            }
+            let lastsample = sample.last as? HKQuantitySample
+            let weightInKilograms = lastsample!.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            self.user.weightInKilograms = weightInKilograms
+            self.updateLabels()
         }
+    }
     
     private func loadAndDisplayMostRecentHeight() {
         

@@ -159,7 +159,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
             present(imagePicker, animated: true, completion: nil)
     }
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             let image = pickedImage
@@ -213,7 +212,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         self.present(navController, animated: true, completion: nil)
     }
     
-    
     @IBAction func popWater(_ sender: Any){
         let waterPopVC = storyboard?.instantiateViewController(withIdentifier: "WaterPopoverViewController") as! WaterPopoverViewController
         waterPopVC.preferredContentSize = CGSize(width: 10, height: 10)
@@ -226,7 +224,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIPopover
         
         self.present(navController, animated: true, completion: nil)
     }
-    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
         return .none
