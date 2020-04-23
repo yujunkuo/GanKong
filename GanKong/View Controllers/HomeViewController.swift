@@ -21,9 +21,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     let networkController = NetworkController( )
     
 
-    @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
-        authorizeHealthKit( )
-    }
+//    @IBAction func AuthorizationButtonAction(_ sender: UIButton) {
+//        authorizeHealthKit( )
+//    }
     
     @IBOutlet var currentLocation: UILabel!
     @IBOutlet var weatherMain: UILabel!
@@ -57,6 +57,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         super.viewDidLoad( )
         
         user.session_id = self.session_id
+        
+        authorizeHealthKit( )
         
         // 1. 還沒有詢問過用戶以獲得權限
         if CLLocationManager.authorizationStatus( ) == .notDetermined {
