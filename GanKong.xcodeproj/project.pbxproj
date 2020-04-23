@@ -15,6 +15,9 @@
 		062FFEE92449532B0054A833 /* HelperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062FFEE82449532B0054A833 /* HelperController.swift */; };
 		5200A91F243C611800E1602F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A91E243C611800E1602F /* LoginViewController.swift */; };
 		5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A920243C612D00E1602F /* RegisterViewController.swift */; };
+		528B309A2451C4160003D6D5 /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = 528B30992451C4160003D6D5 /* bear.gif */; };
+		528B309C2451C50D0003D6D5 /* GIFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B309B2451C50D0003D6D5 /* GIFController.swift */; };
+		528B30A02451E0F90003D6D5 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B309F2451E0F90003D6D5 /* CheckAuthViewController.swift */; };
 		52FD9319242DDA7A00287167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD9318242DDA7A00287167 /* AppDelegate.swift */; };
 		52FD931B242DDA7A00287167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD931A242DDA7A00287167 /* SceneDelegate.swift */; };
 		52FD9322242DDA7C00287167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FD9321242DDA7C00287167 /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		062FFEE82449532B0054A833 /* HelperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperController.swift; sourceTree = "<group>"; };
 		5200A91E243C611800E1602F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5200A920243C612D00E1602F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		528B30992451C4160003D6D5 /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
+		528B309B2451C50D0003D6D5 /* GIFController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFController.swift; sourceTree = "<group>"; };
+		528B309F2451E0F90003D6D5 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
 		52FD9315242DDA7A00287167 /* GanKong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanKong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FD9318242DDA7A00287167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52FD931A242DDA7A00287167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 			children = (
 				52FD9317242DDA7A00287167 /* GanKong */,
 				52FD9316242DDA7A00287167 /* Products */,
+				528B30992451C4160003D6D5 /* bear.gif */,
 				52FD9343242DE97500287167 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -99,9 +106,9 @@
 				52FD9318242DDA7A00287167 /* AppDelegate.swift */,
 				52FD931A242DDA7A00287167 /* SceneDelegate.swift */,
 				062AA68224485DF7005A2EBF /* Main.storyboard */,
-				52FD9321242DDA7C00287167 /* Assets.xcassets */,
 				52FD9323242DDA7C00287167 /* LaunchScreen.storyboard */,
 				52FD9326242DDA7C00287167 /* Info.plist */,
+				52FD9321242DDA7C00287167 /* Assets.xcassets */,
 			);
 			path = GanKong;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 				062AA67B24483A3F005A2EBF /* DrinkPopoverViewController.swift */,
 				062AA68424487882005A2EBF /* WaterPopoverViewController.swift */,
 				0613D7B8245010C800B5EB36 /* ExercisePopoverViewController.swift */,
+				528B309F2451E0F90003D6D5 /* CheckAuthViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -146,6 +154,7 @@
 				52FD9340242DDE5700287167 /* NetworkController.swift */,
 				062FFEE82449532B0054A833 /* HelperController.swift */,
 				0613D7BC245191F100B5EB36 /* LoadController.swift */,
+				528B309B2451C50D0003D6D5 /* GIFController.swift */,
 			);
 			path = "Other Controllers";
 			sourceTree = "<group>";
@@ -218,6 +227,7 @@
 			files = (
 				062AA68324485DF7005A2EBF /* Main.storyboard in Resources */,
 				52FD9325242DDA7C00287167 /* LaunchScreen.storyboard in Resources */,
+				528B309A2451C4160003D6D5 /* bear.gif in Resources */,
 				52FD9322242DDA7C00287167 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +241,7 @@
 			files = (
 				5200A91F243C611800E1602F /* LoginViewController.swift in Sources */,
 				52FD9339242DDD6800287167 /* BodyIndex.swift in Sources */,
+				528B309C2451C50D0003D6D5 /* GIFController.swift in Sources */,
 				52FD9333242DDBD700287167 /* EvaluationTableViewController.swift in Sources */,
 				52FD933F242DDE2700287167 /* UserController.swift in Sources */,
 				52FD9319242DDA7A00287167 /* AppDelegate.swift in Sources */,
@@ -243,6 +254,7 @@
 				52FD9341242DDE5700287167 /* NetworkController.swift in Sources */,
 				0613D7B9245010C800B5EB36 /* ExercisePopoverViewController.swift in Sources */,
 				52FD9337242DDCC200287167 /* UserTableViewController.swift in Sources */,
+				528B30A02451E0F90003D6D5 /* CheckAuthViewController.swift in Sources */,
 				5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */,
 				52FD931B242DDA7A00287167 /* SceneDelegate.swift in Sources */,
 				062AA67C24483A3F005A2EBF /* DrinkPopoverViewController.swift in Sources */,

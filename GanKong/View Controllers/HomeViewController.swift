@@ -48,10 +48,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
       }
     }
     
-
+    @IBOutlet var mainGIFImageView: UIImageView!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-     
+        
+         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+             appDelegate.user = self.user
+         }
+         
+         mainGIFImageView.loadGif(name: "bear")
     }
     
     override func viewDidLoad( ) {
@@ -59,9 +65,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         super.viewDidLoad( )
         
         user.session_id = self.session_id
-        
-        authorizeHealthKit( )
-        
+
         // 1. 還沒有詢問過用戶以獲得權限
         if CLLocationManager.authorizationStatus( ) == .notDetermined {
             locationManager.requestWhenInUseAuthorization( )
@@ -84,7 +88,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         drinkButton.isHidden = true
         exerciseButton.isHidden = true
         foodButton.isHidden = true
-        
+
         self.loadAndDisplayAgeSexAndBloodType()
         self.loadAndDisplayMostRecentWeight()
         self.loadAndDisplayMostRecentHeight()
@@ -92,10 +96,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         self.loadAndDisplayMostRecentStep()
         self.loadAndDisplayMostRecentSleepAnalysis()
         
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.user = self.user
-        }
-
         // Do any additional setup after loading the view.
     }
     
