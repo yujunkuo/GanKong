@@ -324,16 +324,6 @@
                                     <action selector="cancelButtonPressed:" destination="UmQ-4L-Wti" eventType="touchDown" id="hkL-ke-Stb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(一杯約為300 c.c.)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-cH-kPR">
-                                <rect key="frame" x="154.5" y="261" width="105" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="0GU-p2-C4u"/>
-                                    <constraint firstAttribute="height" constant="21" id="FSq-lQ-exn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OX-5K-Kbk">
                                 <rect key="frame" x="224" y="188" width="66" height="66"/>
                                 <constraints>
@@ -387,6 +377,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(一杯約為300 c.c.)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-cH-kPR">
+                                <rect key="frame" x="139" y="262" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77411776781082153" green="0.94416725635528564" blue="0.94358670711517334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -394,14 +391,11 @@
                             <constraint firstItem="gCz-i8-GUf" firstAttribute="centerY" secondItem="2ou-41-tqC" secondAttribute="centerY" constant="4.5" id="8kB-ja-wro"/>
                             <constraint firstItem="6OX-5K-Kbk" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" constant="50" id="DV9-Cw-I35"/>
                             <constraint firstItem="YYg-RT-r89" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" constant="-2.5" id="Mag-ne-gUv"/>
-                            <constraint firstItem="0yV-cH-kPR" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" id="PxM-3O-43p"/>
                             <constraint firstItem="mOF-S1-i46" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" constant="-40" id="UWd-eb-1wC"/>
                             <constraint firstItem="mWR-ex-ofJ" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" id="Wle-3k-2pa"/>
                             <constraint firstItem="cZd-Fo-awq" firstAttribute="centerY" secondItem="2ou-41-tqC" secondAttribute="centerY" constant="-293" id="Xt8-OP-WkA"/>
                             <constraint firstItem="cZd-Fo-awq" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" id="Y8v-NG-mei"/>
-                            <constraint firstItem="0yV-cH-kPR" firstAttribute="centerY" secondItem="2ou-41-tqC" secondAttribute="centerY" constant="-176.5" id="cDU-n7-XRz"/>
                             <constraint firstItem="WWT-dB-M3p" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" constant="124.5" id="dwG-48-hta"/>
-                            <constraint firstItem="0yV-cH-kPR" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" id="epT-2F-3CW"/>
                             <constraint firstItem="WWT-dB-M3p" firstAttribute="centerY" secondItem="2ou-41-tqC" secondAttribute="centerY" constant="4.5" id="nxJ-cE-bc3"/>
                             <constraint firstItem="gCz-i8-GUf" firstAttribute="centerX" secondItem="2ou-41-tqC" secondAttribute="centerX" constant="-124.5" id="nzf-2p-Ebl"/>
                             <constraint firstItem="6OX-5K-Kbk" firstAttribute="centerY" secondItem="2ou-41-tqC" secondAttribute="centerY" constant="-227" id="qE3-LF-1y1"/>
@@ -650,11 +644,11 @@
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="509.59821428571428"/>
         </scene>
-        <!--評估-->
+        <!--推薦-->
         <scene sceneID="E4h-tF-2dw">
             <objects>
                 <navigationController id="k7U-DH-sVZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="評估" image="waveform.path.ecg" catalog="system" id="BR3-ko-IyV"/>
+                    <tabBarItem key="tabBarItem" title="推薦" image="magnifyingglass.circle" catalog="system" id="BR3-ko-IyV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="6Bo-0d-hdy">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1503,7 +1497,7 @@
     <resources>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="waveform.path.ecg" catalog="system" width="128" height="124"/>
     </resources>
 </document>

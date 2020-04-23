@@ -12,7 +12,6 @@ class ExercisePopoverViewController: UIViewController {
     
     var user = User( )
     
-    let homeVC = HomeViewController( )
     let helper = HelperController()
     let networkController = NetworkController( )
     
