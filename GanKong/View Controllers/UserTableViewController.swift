@@ -13,8 +13,6 @@ class UserTableViewController: UITableViewController {
     
     var user = User()
     
-    //    var homeVC = HomeViewController( )
-    
     override func viewDidLoad( ) {
         super.viewDidLoad( )
         

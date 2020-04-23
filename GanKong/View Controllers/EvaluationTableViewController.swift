@@ -14,7 +14,16 @@ class EvaluationTableViewController: UITableViewController {
         BodyIndex(name: "Heart Rate", symbol: "-❤️" ),
         BodyIndex(name: "Sleep", symbol: "-😴" )
     ]
-
+    
+    // step count : bar chart
+    // HR : line chart
+    // weight & height : line chart
+    // sleep : 瀑布圖
+    // water :
+    // food :
+    // exercise :
+    // calories : 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

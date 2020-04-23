@@ -30,6 +30,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     @IBOutlet var weatherDescription: UILabel!
     @IBOutlet var waterButton: UIButton!
     @IBOutlet var drinkButton: UIButton!
+    @IBOutlet var exerciseButton: UIButton!
+    @IBOutlet var foodButton: UIButton!
 
     private func authorizeHealthKit( ) {
         HealthKitAuthorization.authorizeHealthKit { (authorized, error) in
@@ -80,6 +82,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         
         waterButton.isHidden = true
         drinkButton.isHidden = true
+        exerciseButton.isHidden = true
+        foodButton.isHidden = true
         
         self.loadAndDisplayAgeSexAndBloodType()
         self.loadAndDisplayMostRecentWeight()
@@ -190,11 +194,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         if drinkCount == 0{
             waterButton.isHidden = false
             drinkButton.isHidden = false
+            exerciseButton.isHidden = false
+            foodButton.isHidden = false
             drinkCount = 1
         }
         else{
             waterButton.isHidden = true
             drinkButton.isHidden = true
+            exerciseButton.isHidden = true
+            foodButton.isHidden = true
             drinkCount = 0
         }
     }

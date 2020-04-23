@@ -33,7 +33,7 @@ class WaterPopoverViewController: UIViewController {
         
         datePickerView.locale = Locale(identifier: "zh_TW")
         
-        datePickerView.addTarget(self, action: #selector(DrinkPopoverViewController.datePickerChanged), for: .valueChanged)
+        datePickerView.addTarget(self, action: #selector(WaterPopoverViewController.datePickerChanged), for: .valueChanged)
         
         dateField.inputView = datePickerView
         dateField.placeholder = "Select Date"
