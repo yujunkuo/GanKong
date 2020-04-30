@@ -12,7 +12,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     let networkController = NetworkController( )
     
-    var authCheck = false
+    var authCheck = true
     
     var session_id: String = "Nil"
     

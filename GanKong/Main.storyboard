@@ -233,9 +233,8 @@
                                     <action selector="popDrink:" destination="pDW-qz-a3O" eventType="touchDown" id="xqE-HE-2am"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-kf-NI2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-kf-NI2">
                                 <rect key="frame" x="329" y="109" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="🍟"/>
                                 <connections>
@@ -261,22 +260,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-<<<<<<< HEAD
-=======
                             <constraint firstItem="F9s-kf-NI2" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="147" id="3dP-yD-u2w"/>
                             <constraint firstItem="odh-vh-ne8" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="231" id="48r-af-KBO"/>
->>>>>>> afb7052c82c56a141d1df14eee6f7291504a71a0
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="CyM-wH-tU3"/>
                             <constraint firstItem="SXa-iB-1s0" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-95" id="ERx-3J-QMa"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" constant="-35.5" id="Gha-ca-KDD"/>
                             <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="8" id="WdQ-eP-XkU"/>
                             <constraint firstItem="btB-Nm-DfZ" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="hYA-M4-Nfv"/>
                             <constraint firstItem="kTm-PY-cd4" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="-193" id="umh-bh-Xou"/>
-<<<<<<< HEAD
-=======
                             <constraint firstItem="F9s-kf-NI2" firstAttribute="centerY" secondItem="0qO-hb-PjX" secondAttribute="centerY" constant="88" id="wT9-Gv-sHM"/>
                             <constraint firstItem="odh-vh-ne8" firstAttribute="centerX" secondItem="0qO-hb-PjX" secondAttribute="centerX" id="xXH-HF-MdD"/>
->>>>>>> afb7052c82c56a141d1df14eee6f7291504a71a0
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JjG-hX-Dsa"/>
                     </view>
@@ -284,12 +277,9 @@
                     <connections>
                         <outlet property="currentLocation" destination="kTm-PY-cd4" id="VDD-4O-suf"/>
                         <outlet property="drinkButton" destination="GVv-Cc-yOl" id="Q1d-E9-V3M"/>
-<<<<<<< HEAD
                         <outlet property="exerciseButton" destination="p2F-ya-ayW" id="s1X-Gp-Bb6"/>
                         <outlet property="foodButton" destination="F9s-kf-NI2" id="vFO-XU-y8S"/>
-=======
                         <outlet property="mainGIFImageView" destination="odh-vh-ne8" id="Wls-tq-nM6"/>
->>>>>>> afb7052c82c56a141d1df14eee6f7291504a71a0
                         <outlet property="waterButton" destination="vjS-Pk-oxO" id="Czq-sN-elD"/>
                         <outlet property="weatherDescription" destination="btB-Nm-DfZ" id="Z7q-bm-HEw"/>
                         <outlet property="weatherMain" destination="SXa-iB-1s0" id="tXF-OS-60R"/>
@@ -1630,14 +1620,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="kbn-ay-kag"/>
-        <segue reference="56D-tT-AvE"/>
-=======
         <segue reference="DXT-bc-FJe"/>
         <segue reference="Wck-Tv-pse"/>
         <segue reference="uVE-FR-UoX"/>
->>>>>>> afb7052c82c56a141d1df14eee6f7291504a71a0
     </inferredMetricsTieBreakers>
     <resources>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>

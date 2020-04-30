@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     let networkController = NetworkController( )
     
-    var authCheck = false
+    var authCheck = true
     
     @IBOutlet var accountInput: UITextField!
     @IBOutlet var passwordInput: UITextField!
