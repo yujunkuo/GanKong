@@ -50,6 +50,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     
     @IBOutlet var mainGIFImageView: UIImageView!
     
+    @IBOutlet var backgroundImageView: UIImageView!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -63,6 +65,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     override func viewDidLoad( ) {
         
         super.viewDidLoad( )
+        
+        //backgroundImageView.image = UIImage(named: "Untitled_Artwork.png")
+        
+        //self.view.insertSubview(backgroundImageView, at: 0)
+        
+        mainGIFImageView.loadGif(name: "bear")
         
         user.session_id = self.session_id
 
