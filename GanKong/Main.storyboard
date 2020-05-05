@@ -1421,7 +1421,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="EOw-iD-hQd" eventType="touchUpInside" id="UxR-2B-q7N"/>
-                                    <segue destination="YbE-Pf-9qI" kind="presentation" identifier="LoginNotAuthSegue" modalPresentationStyle="fullScreen" id="MDZ-ri-x5y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wba-jH-X80">
@@ -1476,7 +1475,8 @@
                         <outlet property="accountInput" destination="lHO-Gv-1bD" id="KqS-8Y-tbh"/>
                         <outlet property="errorLabel" destination="iP8-fD-Ohd" id="RrZ-At-8Za"/>
                         <outlet property="passwordInput" destination="ZPk-0O-w4k" id="dqT-zH-YzU"/>
-                        <segue destination="Xur-t1-emK" kind="presentation" identifier="LoginSegue" modalPresentationStyle="fullScreen" id="kbn-ay-kag"/>
+                        <segue destination="YbE-Pf-9qI" kind="presentation" identifier="LoginNotAuthSegue" modalPresentationStyle="fullScreen" id="TqY-Nc-4ZI"/>
+                        <segue destination="Xur-t1-emK" kind="presentation" identifier="LoginSegue" modalPresentationStyle="fullScreen" id="jOM-kw-h2o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9Y-bN-tzZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1628,8 +1628,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DXT-bc-FJe"/>
-        <segue reference="Wck-Tv-pse"/>
+        <segue reference="jOM-kw-h2o"/>
+        <segue reference="TqY-Nc-4ZI"/>
         <segue reference="uVE-FR-UoX"/>
     </inferredMetricsTieBreakers>
     <resources>
