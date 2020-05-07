@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		062AA68324485DF7005A2EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062AA68224485DF7005A2EBF /* Main.storyboard */; };
 		062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA68424487882005A2EBF /* WaterPopoverViewController.swift */; };
 		062FFEE92449532B0054A833 /* HelperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062FFEE82449532B0054A833 /* HelperController.swift */; };
+		0646DE34246142A4008665C1 /* FetchNearbyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DE33246142A4008665C1 /* FetchNearbyController.swift */; };
+		0646DE36246146B6008665C1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DE35246146B6008665C1 /* Location.swift */; };
 		5200A91F243C611800E1602F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A91E243C611800E1602F /* LoginViewController.swift */; };
 		5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A920243C612D00E1602F /* RegisterViewController.swift */; };
 		528B309A2451C4160003D6D5 /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = 528B30992451C4160003D6D5 /* bear.gif */; };
@@ -33,6 +35,7 @@
 		52FD933F242DDE2700287167 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD933E242DDE2700287167 /* UserController.swift */; };
 		52FD9341242DDE5700287167 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FD9340242DDE5700287167 /* NetworkController.swift */; };
 		52FD9345242DE97500287167 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FD9344242DE97500287167 /* HealthKit.framework */; };
+		C8DB4F61F63148CA6BD55BE9 /* Pods_GanKong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B5823CE67DBAA062B27F2 /* Pods_GanKong.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,8 @@
 		062AA68224485DF7005A2EBF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		062AA68424487882005A2EBF /* WaterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterPopoverViewController.swift; sourceTree = "<group>"; };
 		062FFEE82449532B0054A833 /* HelperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperController.swift; sourceTree = "<group>"; };
+		0646DE33246142A4008665C1 /* FetchNearbyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearbyController.swift; sourceTree = "<group>"; };
+		0646DE35246146B6008665C1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5200A91E243C611800E1602F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5200A920243C612D00E1602F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		528B30992451C4160003D6D5 /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
@@ -65,6 +70,9 @@
 		52FD9340242DDE5700287167 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		52FD9342242DE97500287167 /* GanKong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GanKong.entitlements; sourceTree = "<group>"; };
 		52FD9344242DE97500287167 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		76B4B8DA607E26A17CAFD86A /* Pods-GanKong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GanKong.debug.xcconfig"; path = "Target Support Files/Pods-GanKong/Pods-GanKong.debug.xcconfig"; sourceTree = "<group>"; };
+		CA233266746E99E3FADCC7B8 /* Pods-GanKong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GanKong.release.xcconfig"; path = "Target Support Files/Pods-GanKong/Pods-GanKong.release.xcconfig"; sourceTree = "<group>"; };
+		E79B5823CE67DBAA062B27F2 /* Pods_GanKong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GanKong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +81,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				52FD9345242DE97500287167 /* HealthKit.framework in Frameworks */,
+				C8DB4F61F63148CA6BD55BE9 /* Pods_GanKong.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DA97DF0EFC9EC9A337A906A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76B4B8DA607E26A17CAFD86A /* Pods-GanKong.debug.xcconfig */,
+				CA233266746E99E3FADCC7B8 /* Pods-GanKong.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		52FD930C242DDA7A00287167 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +105,7 @@
 				528B30992451C4160003D6D5 /* bear.gif */,
 				52B306D7245B0DBA005B38C6 /* Untitled_Artwork.png */,
 				52FD9343242DE97500287167 /* Frameworks */,
+				3DA97DF0EFC9EC9A337A906A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +165,7 @@
 				52FD9338242DDD6800287167 /* BodyIndex.swift */,
 				52FD933A242DDD8A00287167 /* User.swift */,
 				52FD933C242DDDE200287167 /* HealthKitAuthorization.swift */,
+				0646DE35246146B6008665C1 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +178,7 @@
 				062FFEE82449532B0054A833 /* HelperController.swift */,
 				0613D7BC245191F100B5EB36 /* LoadController.swift */,
 				528B309B2451C50D0003D6D5 /* GIFController.swift */,
+				0646DE33246142A4008665C1 /* FetchNearbyController.swift */,
 			);
 			path = "Other Controllers";
 			sourceTree = "<group>";
@@ -166,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				52FD9344242DE97500287167 /* HealthKit.framework */,
+				E79B5823CE67DBAA062B27F2 /* Pods_GanKong.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52FD9329242DDA7C00287167 /* Build configuration list for PBXNativeTarget "GanKong" */;
 			buildPhases = (
+				11E5ED45092EEC8C698752B6 /* [CP] Check Pods Manifest.lock */,
 				52FD9311242DDA7A00287167 /* Sources */,
 				52FD9312242DDA7A00287167 /* Frameworks */,
 				52FD9313242DDA7A00287167 /* Resources */,
+				DFC7D117759098E62571EFA3 /* [CP] Copy Pods Resources */,
+				573F27256D8381750765DD12 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,6 +263,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11E5ED45092EEC8C698752B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GanKong-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		573F27256D8381750765DD12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFC7D117759098E62571EFA3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GanKong/Pods-GanKong-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52FD9311242DDA7A00287167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -255,7 +339,9 @@
 				52FD9335242DDC7200287167 /* EvaluationDetailViewController.swift in Sources */,
 				062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */,
 				52FD933B242DDD8A00287167 /* User.swift in Sources */,
+				0646DE36246146B6008665C1 /* Location.swift in Sources */,
 				52FD9341242DDE5700287167 /* NetworkController.swift in Sources */,
+				0646DE34246142A4008665C1 /* FetchNearbyController.swift in Sources */,
 				0613D7B9245010C800B5EB36 /* ExercisePopoverViewController.swift in Sources */,
 				52FD9337242DDCC200287167 /* UserTableViewController.swift in Sources */,
 				528B30A02451E0F90003D6D5 /* CheckAuthViewController.swift in Sources */,
@@ -396,6 +482,7 @@
 		};
 		52FD932A242DDA7C00287167 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76B4B8DA607E26A17CAFD86A /* Pods-GanKong.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GanKong/GanKong.entitlements;
@@ -415,6 +502,7 @@
 		};
 		52FD932B242DDA7C00287167 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA233266746E99E3FADCC7B8 /* Pods-GanKong.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GanKong/GanKong.entitlements;

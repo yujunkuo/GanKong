@@ -672,6 +672,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lvB-Z9-azs">
+                            <rect key="frame" x="0.0" y="111.5" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BodyIndexCell" textLabel="WFh-W1-wRr" detailTextLabel="huM-IW-pej" style="IBUITableViewCellStyleSubtitle" id="OUB-5j-zmr">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
@@ -706,7 +713,21 @@
                             <outlet property="delegate" destination="NS8-Na-5NF" id="olH-cp-vEB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Evaluation" id="7ac-an-PKw"/>
+                    <navigationItem key="navigationItem" title="Evaluation" id="7ac-an-PKw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="kQv-T1-ExL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rgd-SM-byy">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <connections>
+                                <action selector="getCurrentPlace:" destination="NS8-Na-5NF" id="MzC-72-LjQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="lvB-Z9-azs" id="i2Y-GM-OkL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oi2-bP-7ik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

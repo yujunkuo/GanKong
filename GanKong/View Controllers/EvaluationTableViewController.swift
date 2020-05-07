@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import GooglePlaces
+import Alamofire
 
-class EvaluationTableViewController: UITableViewController {
+class EvaluationTableViewController: UITableViewController, FetchLocationDelegate {
     
     var bodyindexes: [ BodyIndex ] = [
         BodyIndex(name: "Heart Rate", symbol: "-❤️" ),
         BodyIndex(name: "Sleep", symbol: "-😴" )
     ]
+    
+    var placesClient: GMSPlacesClient!
     
     // step count : bar chart
     // HR : line chart
@@ -22,17 +26,29 @@ class EvaluationTableViewController: UITableViewController {
     // water :
     // food :
     // exercise :
-    // calories : 
+    // calories :
+    
+    let fetchNearby = fetchNearbyManager( )
+    
+    func fetchRequestHandler(urlString: String){
+        <#function body#>
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        placesClient = GMSPlacesClient.shared()
+        
+        fetchNearby.delegate = self
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
 
     // MARK: - Table view data source
 

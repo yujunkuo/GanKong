@@ -167,6 +167,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
             }
         }
     }
+
     
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ( )) {
         CLGeocoder( ).reverseGeocodeLocation(location) { placemarks, error in
