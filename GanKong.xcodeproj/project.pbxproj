@@ -13,7 +13,6 @@
 		062AA68324485DF7005A2EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062AA68224485DF7005A2EBF /* Main.storyboard */; };
 		062AA68524487883005A2EBF /* WaterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062AA68424487882005A2EBF /* WaterPopoverViewController.swift */; };
 		062FFEE92449532B0054A833 /* HelperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062FFEE82449532B0054A833 /* HelperController.swift */; };
-		0646DE34246142A4008665C1 /* FetchNearbyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DE33246142A4008665C1 /* FetchNearbyController.swift */; };
 		0646DE36246146B6008665C1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DE35246146B6008665C1 /* Location.swift */; };
 		5200A91F243C611800E1602F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A91E243C611800E1602F /* LoginViewController.swift */; };
 		5200A921243C612D00E1602F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200A920243C612D00E1602F /* RegisterViewController.swift */; };
@@ -45,7 +44,6 @@
 		062AA68224485DF7005A2EBF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		062AA68424487882005A2EBF /* WaterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterPopoverViewController.swift; sourceTree = "<group>"; };
 		062FFEE82449532B0054A833 /* HelperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperController.swift; sourceTree = "<group>"; };
-		0646DE33246142A4008665C1 /* FetchNearbyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearbyController.swift; sourceTree = "<group>"; };
 		0646DE35246146B6008665C1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5200A91E243C611800E1602F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5200A920243C612D00E1602F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				062FFEE82449532B0054A833 /* HelperController.swift */,
 				0613D7BC245191F100B5EB36 /* LoadController.swift */,
 				528B309B2451C50D0003D6D5 /* GIFController.swift */,
-				0646DE33246142A4008665C1 /* FetchNearbyController.swift */,
 			);
 			path = "Other Controllers";
 			sourceTree = "<group>";
@@ -341,7 +338,6 @@
 				52FD933B242DDD8A00287167 /* User.swift in Sources */,
 				0646DE36246146B6008665C1 /* Location.swift in Sources */,
 				52FD9341242DDE5700287167 /* NetworkController.swift in Sources */,
-				0646DE34246142A4008665C1 /* FetchNearbyController.swift in Sources */,
 				0613D7B9245010C800B5EB36 /* ExercisePopoverViewController.swift in Sources */,
 				52FD9337242DDCC200287167 /* UserTableViewController.swift in Sources */,
 				528B30A02451E0F90003D6D5 /* CheckAuthViewController.swift in Sources */,
