@@ -8,10 +8,12 @@
 
 import UIKit
 import HealthKit
+import GooglePlaces
 
 class EvaluationDetailViewController: UIViewController {
     
     var bodyIndexType: String!
+    var nearbyPlacesType: String!
     let networkController = NetworkController( )
     var heartRateDatas = [Double]( )
     
@@ -22,14 +24,14 @@ class EvaluationDetailViewController: UIViewController {
     
     override func viewDidLoad( ) {
         super.viewDidLoad( )
-//        getMostRecentSample(for: HKSampleType) { (HKQuantitySample?, Error?) in
-//            <#code#>
-//        }
+
         networkController.fetchHeartRateData { (heartRateData) in
                   if let heartRateData = heartRateData {
                     self.updateUI(with: heartRateData)
                   }
                 }
+        
+//        nearbyPlaces = networkController.getNearby(lat: latitude as! CLLocationDegrees, lng: longitude as! CLLocationDegrees)
     }
     
     func updateUI(with heartRateData: [Double]) {

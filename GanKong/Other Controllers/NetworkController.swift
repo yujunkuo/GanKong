@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GooglePlaces
 
 class NetworkController {
     
@@ -354,6 +355,73 @@ class NetworkController {
         }
         task.resume( )
     }
+    
+//    var placesClient: GMSPlacesClient!
+//    var nearbyPlaces:[Location] = []
+//
+//    func getNearby(lat: CLLocationDegrees, lng:CLLocationDegrees) -> [Location]{
+//        nearbyPlaces.removeAll()
+//        placesClient.currentPlace(callback: { (placeLikelihoods, error) -> Void in
+//            if let error = error {
+//                // TODO: Handle the error.
+//                print("Current Place error: \(error.localizedDescription)")
+//                return
+//            }
+//
+//            // Get likely places and add to the list.
+//            if let likelihoodList = placeLikelihoods {
+//                for likelihood in likelihoodList.likelihoods {
+//                    if likelihood.place.types == ["restaurant"]{
+//                        let place = likelihood.place
+//
+//                        var rating:Float = -1.0
+//
+//                        if place.rating != nil {
+//
+//                            guard let rlevel = place.rating as? Float else {
+//                                return
+//                            }
+//                            rating = rlevel
+//                        }
+//
+//                        var photo:[GMSPlacePhotoMetadata] = []
+//
+//                        if place.photos != nil{
+//                            guard let photoChoose = place.photos as? [GMSPlacePhotoMetadata] else{
+//                                return
+//                            }
+//                            photo = photoChoose
+//                        }
+//
+//
+//                        guard
+//                            let latitude = place.coordinate.latitude as? CLLocationDegrees,
+//                            let longitude = place.coordinate.longitude as? CLLocationDegrees,
+//                            let name = place.name,
+//                            let placeId = place.placeID,
+//                            let types = place.types,
+//                            let openingHours = place.openingHours?.weekdayText,
+//                            let address = place.formattedAddress as? String else {
+//                                return
+//                        }
+//
+//                        let location = Location(latitude: latitude,
+//                                                longitude: longitude,
+//                                                name: name,
+//                                                placeId: placeId,
+//                                                openingHours: openingHours,
+//                                                rating: rating,
+//                                                types: types,
+//                                                photo: photo,
+//                                                address: address)
+//
+//                        self.nearbyPlaces.append(location)
+//                    }
+//                }
+//            }
+//        })
+//        return self.nearbyPlaces
+//    }
 
     
 }

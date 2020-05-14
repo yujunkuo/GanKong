@@ -8,10 +8,14 @@
 
 import UIKit
 import HealthKit
+import GooglePlaces
 
 class UserTableViewController: UITableViewController {
     
     var user = User()
+    
+    var placesClient = GMSPlacesClient.shared()
+    var nearbyPlaces:[Location] = []
     
     override func viewDidLoad( ) {
         super.viewDidLoad( )
@@ -21,6 +25,9 @@ class UserTableViewController: UITableViewController {
         }
         user.session_id = String((UserDefaults.standard.value(forKey: "session_id") as? String)!)
         updateHealthInfo( )
+        
+        let latitude = 24.983696
+        let longitude = 121.566926
     }
     
     let networkController = NetworkController( )
@@ -37,6 +44,7 @@ class UserTableViewController: UITableViewController {
     @IBOutlet var HRDateLabel: UILabel!
     @IBOutlet var sleepStartLabel: UILabel!
     @IBOutlet var sleepEndLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
     
     @IBAction func logoutButton(_ sender: UIButton) {
         self.networkController.logout(session_id: self.user.session_id!) {
@@ -147,6 +155,8 @@ class UserTableViewController: UITableViewController {
         }
     }
     
+    
+    
     // MARK: - Table view data source
     
     //override func numberOfSections(in tableView: UITableView) -> Int {
@@ -213,5 +223,7 @@ class UserTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    
     
 }

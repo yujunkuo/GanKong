@@ -115,6 +115,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         let now = NSDate()
         let nowTimeStamp: TimeInterval = now.timeIntervalSince1970
         
+        UserDefaults.standard.set(locValue.latitude, forKey: "latitude")
+        UserDefaults.standard.set(locValue.longitude, forKey: "longitude")
+        UserDefaults.standard.set(nowTimeStamp, forKey: "nowTimeStamp")
+        
         if (UserDefaults.standard.value(forKey: "weather_update_time") != nil) {
               let weather_update_time = UserDefaults.standard.value(forKey: "weather_update_time") as! Double
                 if nowTimeStamp - Double(weather_update_time) > 3600 {

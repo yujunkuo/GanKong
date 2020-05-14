@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey("AIzaSyCBabIKFA2_WgOIB6AdYh_5ofZau6ttN3Q")
         
+        //locationManager.delagte = self
+        //allowbackground
+        //pauselocation
+        //activityType
+        
         // Override point for customization after application launch.        
         return true
     }
